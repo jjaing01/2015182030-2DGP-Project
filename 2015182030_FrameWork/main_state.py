@@ -6,12 +6,13 @@ from pico2d import *
 
 import game_framework
 import title_state
+import Player
 #import pause_state
 
 name = "MainState"
 
-boy = None
-grass = None
+m_player = None
+m_map = None
 font = None
 
 
@@ -23,44 +24,24 @@ class Font:
         self.image.draw(400, 300)
 
 
-class Grass:
+class Map:
     def __init__(self):
         self.image = load_image('Tengai/Resource/Map/forest.png')
 
     def draw(self):
-        self.image.draw(400, 30)
-
-
-class Boy:
-    def __init__(self):
-        self.x, self.y = 0, 90
-        self.frame = 0
-        self.image = load_image('run_animation.png')
-        self.dir = 1
-
-    def update(self):
-        self.frame = (self.frame + 1) % 8
-        self.x += self.dir
-        if self.x >= 800:
-            self.dir = -1
-
-        elif self.x <= 0:
-            self.dir = 1
-
-    def draw(self):
-        self.image.clip_draw(self.frame * 100, 0, 100, 100, self.x, self.y)
+        self.image.draw(400, 300)
 
 
 def enter():
-    global boy, grass
-    #boy = Boy()
-    grass = Grass()
+    global m_player, m_map
+    m_player=Player.CPlayer()
+    m_map = Map()
 
 
 def exit():
-    global boy, grass
-    #del(boy)
-    del(grass)
+    global m_player, m_map
+    del(m_player)
+    del(m_map)
 
 
 def pause():
@@ -80,17 +61,15 @@ def handle_events():
            game_framework.change_state(title_state)
        elif event.type == SDL_KEYDOWN and event.key == SDLK_p:
            pass
-            #game_framework.push_state(pause_state)
 
 
 
 def update():
-    #boy.update()
-    pass
+    m_player.update()
 
 
 def draw():
     clear_canvas()
-    grass.draw()
-    #boy.draw()
+    m_map.draw()
+    m_player.draw()
     update_canvas()
