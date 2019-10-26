@@ -66,7 +66,7 @@ def handle_events():
 
 def update():
     m_player.update()
-
+    delay(0.1)
 
 def draw():
     clear_canvas()
