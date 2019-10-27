@@ -7,7 +7,6 @@ from pico2d import *
 import game_framework
 import title_state
 import Player
-#import pause_state
 
 name = "MainState"
 
@@ -66,7 +65,7 @@ def handle_events():
 
 def update():
     m_player.update()
-    delay(0.1)
+    delay(0.001)
 
 def draw():
     clear_canvas()

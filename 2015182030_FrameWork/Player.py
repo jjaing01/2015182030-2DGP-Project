@@ -1,6 +1,7 @@
 import random
 import json
 import os
+import win32api
 
 from pico2d import *
 
@@ -16,15 +17,26 @@ class CPlayer:
         self.frame = 0
         self.image = load_image('Tengai/Resource/Player/Player.png')
         self.dir = 1
+        self.state='Right'
 
     def update(self):
         self.frame = (self.frame + 1) % 2
-        self.x += self.dir
-        if self.x >= 800:
-            self.dir = -1
-
-        elif self.x <= 0:
-            self.dir = 1
+        if (win32api.GetAsyncKeyState(0x25) & 0x8000 or win32api.GetAsyncKeyState(0x26) & 0x8000
+                or win32api.GetAsyncKeyState(0x27) & 0x8000 or win32api.GetAsyncKeyState(0x28) & 0x8000):
+            if win32api.GetAsyncKeyState(0x25) & 0x8000:
+                self.x -= 1
+                self.PlayerState = 'Left'
+            if win32api.GetAsyncKeyState(0x27) & 0x8000:
+                self.x += 1
+                self.PlayerState = 'Right'
+            if win32api.GetAsyncKeyState(0x26) & 0x8000:  # UP
+                self.y += 1
+                PlayerState = 'Up'
+            if win32api.GetAsyncKeyState(0x28) & 0x8000:  # DOWN
+                self.y -= 1
+                self.PlayerState = 'Down'
+            else:
+                self.PlayerState = 'Idle'
 
     def draw(self):
         self.image.clip_draw(self.frame * 32, 32, 32, 32, self.x,self.y,70,70)
@@ -56,7 +68,6 @@ def handle_events():
 
 def update():
     m_player.update()
-    pass
 
 def draw():
     clear_canvas()
