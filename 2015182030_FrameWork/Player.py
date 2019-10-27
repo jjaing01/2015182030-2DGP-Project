@@ -6,6 +6,8 @@ import win32api
 from pico2d import *
 
 import game_framework
+import Player_Bullet
+import main_state
 
 name = "Player"
 
@@ -31,12 +33,15 @@ class CPlayer:
                 self.PlayerState = 'Right'
             if win32api.GetAsyncKeyState(0x26) & 0x8000:  # UP
                 self.y += 1
-                PlayerState = 'Up'
+                self.PlayerState = 'Up'
             if win32api.GetAsyncKeyState(0x28) & 0x8000:  # DOWN
                 self.y -= 1
                 self.PlayerState = 'Down'
             else:
                 self.PlayerState = 'Idle'
+
+        if win32api.GetAsyncKeyState(0x20) & 0x8000:  # SPACE
+            main_state.m_PBulletLst.append(Player_Bullet.CPlayer_Bullet(self.x, self.y))
 
     def draw(self):
         self.image.clip_draw(self.frame * 32, 32, 32, 32, self.x,self.y,70,70)

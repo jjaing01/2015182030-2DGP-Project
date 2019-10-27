@@ -10,10 +10,10 @@ import Player
 
 name = "MainState"
 
+m_PBulletLst=[]
 m_player = None
 m_map = None
 font = None
-
 
 class Font:
     def __init__(self):
@@ -32,15 +32,18 @@ class Map:
 
 
 def enter():
-    global m_player, m_map
+    global m_player, m_map,m_PBulletLst
     m_player=Player.CPlayer()
     m_map = Map()
-
+    for n in m_PBulletLst:
+        n.enter()
 
 def exit():
-    global m_player, m_map
+    global m_player, m_map,m_PBulletLst
     del(m_player)
     del(m_map)
+    for n in m_PBulletLst:
+        del(n)
 
 
 def pause():
@@ -65,10 +68,16 @@ def handle_events():
 
 def update():
     m_player.update()
+    for n in m_PBulletLst:
+        n.update()
+
     delay(0.001)
 
 def draw():
     clear_canvas()
     m_map.draw()
     m_player.draw()
+    for n in m_PBulletLst:
+        n.draw()
+
     update_canvas()
