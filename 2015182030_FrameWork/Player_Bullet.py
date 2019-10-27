@@ -7,7 +7,7 @@ from pico2d import *
 
 import game_framework
 
-name = "Bullet"
+name = "PlayerBullet"
 
 m_playerBullet = None
 

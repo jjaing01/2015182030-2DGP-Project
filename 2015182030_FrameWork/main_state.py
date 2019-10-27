@@ -7,12 +7,14 @@ from pico2d import *
 import game_framework
 import title_state
 import Player
+import Monster_Green
 
 name = "MainState"
 
 m_PBulletLst=[]
 m_player = None
 m_map = None
+m_MonGreen=None
 font = None
 
 class Font:
@@ -32,16 +34,18 @@ class Map:
 
 
 def enter():
-    global m_player, m_map,m_PBulletLst
+    global m_player, m_map,m_PBulletLst,m_MonGreen
     m_player=Player.CPlayer()
+    m_MonGreen=Monster_Green.CMonGreen()
     m_map = Map()
     for n in m_PBulletLst:
         n.enter()
 
 def exit():
-    global m_player, m_map,m_PBulletLst
+    global m_player, m_map,m_PBulletLst,m_MonGreen
     del(m_player)
     del(m_map)
+    del(m_MonGreen)
     for n in m_PBulletLst:
         del(n)
 
@@ -68,6 +72,7 @@ def handle_events():
 
 def update():
     m_player.update()
+    m_MonGreen.update()
     for n in m_PBulletLst:
         n.update()
 
@@ -77,6 +82,7 @@ def draw():
     clear_canvas()
     m_map.draw()
     m_player.draw()
+    m_MonGreen.draw()
     for n in m_PBulletLst:
         n.draw()
 
