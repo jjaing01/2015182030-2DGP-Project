@@ -15,19 +15,21 @@ m_ObjectLst = []
 m_PlayerLst = []
 m_PBulletLst = []
 m_MonsterLst = []
+m_EffectLst = []
 
 Event = 0
 
 m_ObjectLst.append(m_PBulletLst)
 m_ObjectLst.append(m_PlayerLst)
 m_ObjectLst.append(m_MonsterLst)
+m_ObjectLst.append(m_EffectLst)
 
 class CObjectMgr:
 
     def __init__(self):
         self.m_IsDead = 0
 
-    def Add_Object(self, name, x=0, y=0):
+    def Add_Object(self, name, _obj=None, x=0, y=0):
         if name == 'PLAYER':
             obj = Player.CPlayer()
             m_PlayerLst.append(obj)
@@ -38,6 +40,9 @@ class CObjectMgr:
         elif name == 'MON_GREEN':
             obj = Monster_Green.CMonGreen()
             m_MonsterLst.append(obj)
+        elif name == 'EFFECT':
+            m_EffectLst.append(_obj)
+            pass
         else:
             return 0
     def Dead_Object(self):

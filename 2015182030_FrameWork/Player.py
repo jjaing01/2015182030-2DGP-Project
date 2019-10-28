@@ -55,7 +55,7 @@ class CPlayer:
 
         if win32api.GetAsyncKeyState(0x20) & 0x8000:  # SPACE
             if self.m_CreateBulletTime > 4:
-                main_state.m_ObjectMgr.Add_Object('PLAYER_BULLET',self.x,self.y)
+                main_state.m_ObjectMgr.Add_Object('PLAYER_BULLET',None,self.x,self.y)
 
         if self.m_CreateBulletTime <= 5:
             self.m_CreateBulletTime += 1
