@@ -7,51 +7,33 @@ from pico2d import *
 
 import game_framework
 
+import main_state
+
 name = "PlayerBullet"
 
-m_playerBullet = None
-
 class CPlayer_Bullet:
+    image = None
+
     def __init__(self):
         pass
 
-    def __init__(self,x,y):
-        self.x, self.y = x,y
-        self.image = load_image('Tengai/Resource/Bullet/Player/Bullet_Player.png')
+    def __init__(self, _x, _y):
+        self.x, self.y = _x, _y
+        if CPlayer_Bullet.image is None:
+            CPlayer_Bullet.image = load_image('Tengai/Resource/Bullet/Player/Bullet_Player.png')
+        self.m_bIsDead = False
+        self.m_LifeTime = 100
 
     def update(self):
-        self.x+=1
+        if self.m_bIsDead == True:
+            return -1
+
+        if 500 < self.x:
+            self.m_bIsDead = True
+
+        self.x += 1
+
 
     def draw(self):
-        self.image.draw(self.x,self.y,14,8)
-
-def enter():
-    global m_playerBullet
-    m_playerBullet = CPlayer_Bullet()
-
-def exit():
-    global m_playerBullet
-    del(m_playerBullet)
-
-
-def pause():
-    pass
-
-
-def resume():
-    pass
-
-
-def handle_events():
-   events = get_events()
-   for event in events:
-       if event.type == SDL_KEYDOWN and event.key == SDLK_p:
-           pass
-
-def update():
-    m_playerBullet.update()
-
-def draw():
-    clear_canvas()
-    m_playerBullet.draw()
-    update_canvas()
+        print('render')
+        CPlayer_Bullet.image.draw(self.x, self.y, 14, 8)

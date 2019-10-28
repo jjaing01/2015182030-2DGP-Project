@@ -8,15 +8,14 @@ import game_framework
 import title_state
 import Player
 import Monster_Green
+import ObjectMgr
 
 name = "MainState"
 
-m_PBulletLst=[]
-m_player = None
-m_map = None
-m_MonGreen=None
-font = None
+m_ObjectMgr=None
 
+m_map = None
+font = None
 class Font:
     def __init__(self):
         self.image = load_image('pause.png')
@@ -34,29 +33,24 @@ class Map:
 
 
 def enter():
-    global m_player, m_map,m_PBulletLst,m_MonGreen
-    m_player=Player.CPlayer()
-    m_MonGreen=Monster_Green.CMonGreen()
+    global  m_map,m_ObjectMgr
+
+    m_ObjectMgr = ObjectMgr.CObjectMgr()
+    m_ObjectMgr.Add_Object('PLAYER')
+    m_ObjectMgr.Add_Object('MON_GREEN')
+
     m_map = Map()
-    for n in m_PBulletLst:
-        n.enter()
 
 def exit():
-    global m_player, m_map,m_PBulletLst,m_MonGreen
-    del(m_player)
+    global m_map,m_ObjectMgr
     del(m_map)
-    del(m_MonGreen)
-    for n in m_PBulletLst:
-        del(n)
-
+    m_ObjectMgr.Release_Object()
 
 def pause():
     pass
 
-
 def resume():
     pass
-
 
 def handle_events():
    events = get_events()
@@ -69,21 +63,14 @@ def handle_events():
            pass
 
 
-
 def update():
-    m_player.update()
-    m_MonGreen.update()
-    for n in m_PBulletLst:
-        n.update()
+    m_ObjectMgr.Update_Object()
 
-    delay(0.001)
+    delay(0.015)
 
 def draw():
     clear_canvas()
     m_map.draw()
-    m_player.draw()
-    m_MonGreen.draw()
-    for n in m_PBulletLst:
-        n.draw()
-
+    m_ObjectMgr.Render_Object()
     update_canvas()
+
