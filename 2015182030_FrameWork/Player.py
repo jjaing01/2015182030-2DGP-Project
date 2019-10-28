@@ -22,6 +22,7 @@ class CPlayer:
         self.dir = 1
         self.state='Right'
         self.m_bIsDead=False
+        self.m_CreateBulletTime=0
 
     def update(self):
         if self.m_bIsDead == True:
@@ -31,21 +32,21 @@ class CPlayer:
         if (win32api.GetAsyncKeyState(0x25) & 0x8000 or win32api.GetAsyncKeyState(0x26) & 0x8000
                 or win32api.GetAsyncKeyState(0x27) & 0x8000 or win32api.GetAsyncKeyState(0x28) & 0x8000):
             if win32api.GetAsyncKeyState(0x25) & 0x8000:
-                self.x -= 1
+                self.x -= 5
                 self.PlayerState = 'Left'
                 self.dir=2
                 self.framenum = 3
             if win32api.GetAsyncKeyState(0x27) & 0x8000:
-                self.x += 1
+                self.x += 5
                 self.PlayerState = 'Right'
                 self.dir=1
                 self.framenum = 3
             if win32api.GetAsyncKeyState(0x26) & 0x8000:  # UP
-                self.y += 1
+                self.y += 5
                 self.PlayerState = 'Up'
                 self.framenum = 3
             if win32api.GetAsyncKeyState(0x28) & 0x8000:  # DOWN
-                self.y -= 1
+                self.y -= 5
                 self.PlayerState = 'Down'
                 self.framenum = 3
             else:
@@ -53,7 +54,13 @@ class CPlayer:
                 self.framenum = 1
 
         if win32api.GetAsyncKeyState(0x20) & 0x8000:  # SPACE
-            main_state.m_ObjectMgr.Add_Object('PLAYER_BULLET',self.x,self.y)
+            if self.m_CreateBulletTime > 4:
+                main_state.m_ObjectMgr.Add_Object('PLAYER_BULLET',self.x,self.y)
+
+        if self.m_CreateBulletTime <= 5:
+            self.m_CreateBulletTime += 1
+        else:
+            self.m_CreateBulletTime = 0
 
     def draw(self):
         self.image.clip_draw(self.frame * 32, 32*self.dir, 32, 32, self.x,self.y,70,70)

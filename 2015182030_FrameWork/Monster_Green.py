@@ -19,8 +19,20 @@ class CMonGreen:
         self.frame = 0
         self.image = load_image('Tengai/Resource/Monster/Green.png')
         self.dir = 1
+        self.iHp = 100
+        self.m_bIsDead=False
+        self.m_Rad=70
+
+    def Dead_Object(self):
+        self.m_bIsDead=True
 
     def update(self):
+        if self.m_bIsDead == True:
+            return -1
+
+        if self.iHp == 0:
+            self.m_bIsDead=True
+
         self.frame = (self.frame + 1) % 4
 
     def draw(self):

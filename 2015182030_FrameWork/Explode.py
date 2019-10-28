@@ -9,7 +9,7 @@ import game_framework
 
 import main_state
 
-name = "PlayerBullet"
+name = "Explode"
 
 class CPlayer_Bullet:
     image = None

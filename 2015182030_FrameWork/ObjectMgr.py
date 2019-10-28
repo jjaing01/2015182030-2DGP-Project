@@ -7,6 +7,7 @@ from pico2d import *
 import Player
 import Player_Bullet
 import Monster_Green
+import CollisionMgr
 
 PLAYER, PLAYER_BULLET, MON_GREEN = range(3)
 
@@ -39,11 +40,16 @@ class CObjectMgr:
             m_MonsterLst.append(obj)
         else:
             return 0
+    def Dead_Object(self):
+        for List in m_ObjectLst:
+            for GameObj in List:
+                GameObj.IsDead()
 
     def Update_Object(self):
-
         global Event
         global m_ObjectLst
+
+        CollisionMgr.Collision_Monster_PLBullet(m_MonsterLst, m_PBulletLst)
 
         for List in m_ObjectLst:
             for GameObj in List:
