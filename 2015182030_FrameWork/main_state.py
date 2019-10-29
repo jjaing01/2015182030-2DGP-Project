@@ -88,7 +88,8 @@ def update():
 
     # 패턴 1
     if m_pattern == 0 and m_bIsCreate == True:
-        m_ObjectMgr.Add_Object('MON_KAR', None, 1080, 100)
+        m_ObjectMgr.Add_Object('MON_KAR', None, 1080, 300)
+        m_ObjectMgr.Add_Object('MON_KAR', None, 1080, 500)
         m_ObjectMgr.Add_Object('MON_POT', None, 1080, 300)
         m_ObjectMgr.Add_Object('MON_RED', None, 1080, 500)
         m_ObjectMgr.Add_Object('MON_GREEN', None, 900, 400)
@@ -97,11 +98,12 @@ def update():
 
     # 패턴 2
     elif m_pattern == 1 and m_bIsCreate == True:
-        m_ObjectMgr.Add_Object('MON_GREEN', None, 1080, 100)
-        m_ObjectMgr.Add_Object('MON_GREEN', None, 1080, 300)
+        m_ObjectMgr.Add_Object('MON_RED', None, 1080, 100)
+        m_ObjectMgr.Add_Object('MON_RED', None, 1080, 300)
         m_ObjectMgr.Add_Object('MON_GREEN', None, 1080, 500)
-        m_ObjectMgr.Add_Object('MON_GREEN', None, 900, 400)
-        m_ObjectMgr.Add_Object('MON_GREEN', None, 900, 200)
+        m_ObjectMgr.Add_Object('MON_POT', None, 900, 400)
+        m_ObjectMgr.Add_Object('MON_POT', None, 900, 200)
+        m_ObjectMgr.Add_Object('MON_KAR', None, 900, 300)
         m_bIsCreate = False
 
     # 패턴 3

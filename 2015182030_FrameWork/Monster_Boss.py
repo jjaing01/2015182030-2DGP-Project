@@ -21,7 +21,8 @@ class CMonBoss:
         self.x, self.y = x,y
         self.frame = 0
         self.image = load_image('Tengai/Resource/Monster/Boss.png')
-        self.dir = 0.5
+        self.dirX = 0.5
+        self.dirY = 0.5
         self.iHp = 1000
         self.m_bIsDead=False
         self.m_Rad=100
@@ -32,23 +33,31 @@ class CMonBoss:
     def Dead_Object(self):
         self.m_bIsDead = True
 
+    def Change_Dir(self):
+        if self.x <= 600 or self.x > 1080:
+            self.dirX = self.dirX * -1.0
+        if self.y >= 600 or self.y <= 100:
+            self.dirY = self.dirY * -1.0
+
     def update(self):
+        # 죽음
         if self.m_bIsDead == True:
             return -1
-
+        # 죽는 조건
         if self.iHp == 0:
             self.m_bIsDead = True
-
-        if self.m_AttackTime>80:
+        # 공격 주기
+        if self.m_AttackTime > 80:
             main_state.m_ObjectMgr.Add_Object('MONSTER_BULLET', None, self.x, self.y)
-            self.m_AttackTime=0
+            self.m_AttackTime = 0
 
-        self.m_AttackTime+=1
+        self.m_AttackTime += 1
 
         if self.y>=500 or self.y<=50:
             self.dir = dir*-1.0
 
-        self.y += self.dir
+        self.y += self.dirY
+        self.x += self.dirX
 
         # Animation
         self.frame = (self.frame + self.Frame_speed)
