@@ -20,7 +20,7 @@ class CPlayer_Bullet:
     def __init__(self, _x, _y):
         self.x, self.y = _x, _y
         if CPlayer_Bullet.image is None:
-            CPlayer_Bullet.image = load_image('Tengai/Resource/Bullet/Player/Bullet_Player.png')
+            CPlayer_Bullet.image = load_image('Tengai/Resource/Bullet.png')
         self.m_bIsDead = False
         self.m_LifeTime = 100
         self.m_iAtk=50
@@ -39,4 +39,4 @@ class CPlayer_Bullet:
         self.x += 5
 
     def draw(self):
-        CPlayer_Bullet.image.draw(self.x, self.y, 14, 8)
+        CPlayer_Bullet.image.draw(self.x, self.y, 27, 29)

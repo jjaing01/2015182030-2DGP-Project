@@ -38,7 +38,7 @@ class CObjectMgr:
             m_PBulletLst.append(obj)
 
         elif name == 'MON_GREEN':
-            obj = Monster_Green.CMonGreen()
+            obj = Monster_Green.CMonGreen(x,y)
             m_MonsterLst.append(obj)
         elif name == 'EFFECT':
             m_EffectLst.append(_obj)

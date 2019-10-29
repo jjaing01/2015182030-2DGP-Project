@@ -15,6 +15,7 @@ name = "MainState"
 m_ObjectMgr = None
 m_map = None
 font = None
+reCreateTime=0
 
 class Font:
     def __init__(self):
@@ -36,7 +37,9 @@ def enter():
 
     m_ObjectMgr = ObjectMgr.CObjectMgr()
     m_ObjectMgr.Add_Object('PLAYER')
-    m_ObjectMgr.Add_Object('MON_GREEN')
+    m_ObjectMgr.Add_Object('MON_GREEN', None, 500, 100)
+    m_ObjectMgr.Add_Object('MON_GREEN', None, 500, 300)
+    m_ObjectMgr.Add_Object('MON_GREEN', None, 500, 500)
 
     m_map = Map()
 
@@ -63,6 +66,17 @@ def handle_events():
 
 
 def update():
+    global  reCreateTime,m_ObjectMgr
+
+    reCreateTime+=1
+    if reCreateTime >= 100:
+        print('Create Mon')
+        reCreateTime=0
+        for mon in range(3):
+            m_ObjectMgr.Add_Object('MON_GREEN', None, 700, 100)
+            m_ObjectMgr.Add_Object('MON_GREEN', None, 700, 300)
+            m_ObjectMgr.Add_Object('MON_GREEN', None, 700, 500)
+
     m_ObjectMgr.Update_Object()
 
     delay(0.015)
