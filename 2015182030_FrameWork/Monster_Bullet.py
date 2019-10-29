@@ -2,6 +2,7 @@ import random
 import json
 import os
 import win32api
+import math
 
 from pico2d import *
 
@@ -25,6 +26,17 @@ class CMonster_Bullet:
         self.m_iAtk=10
         self.m_Rad=10
 
+    def __init__(self, _x, _y, randDir,_angle):
+        self.x, self.y = _x, _y
+        if CMonster_Bullet.image is None:
+            CMonster_Bullet.image = load_image('Tengai/Resource/Bullet/Monster/enemyMissile.png')
+        self.m_bIsDead = False
+        self.m_LifeTime = 100
+        self.m_iAtk = 10
+        self.m_Rad = 10
+        self.m_bIsRandomShoot = randDir
+        self.m_Angle = _angle
+
     def Dead_Object(self):
         self.m_bIsDead = True
 
@@ -32,10 +44,14 @@ class CMonster_Bullet:
         if self.m_bIsDead == True:
             return -1
 
-        if 1080 < self.x:
+        if 0>= self.x:
             self.m_bIsDead = True
 
-        self.x -= 5
+        if self.m_bIsRandomShoot == True:
+            self.x -= math.cos(self.m_Angle * math.pi / 180.0) * 5.0
+            self.y -= math.sin(self.m_Angle * math.pi / 180.0) * 5.0
+        else:
+            self.x -= 5
 
     def draw(self):
         CMonster_Bullet.image.draw(self.x, self.y, 27, 29)

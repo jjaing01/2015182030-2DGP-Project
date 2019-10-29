@@ -15,8 +15,8 @@ image_num=None
 iNumber=0
 
 class CBack_Object:
-    def __init__(self):
-        self.x, self.y = 540, 500
+    def __init__(self,x,y):
+        self.x, self.y = x, y
 
         global image
         global image_num
@@ -28,21 +28,22 @@ class CBack_Object:
             image.append(image_num)
 
         self.frame=0
+        self.iNumber=random.randint(0,15)
 
     def update(self):
         global iNumber
 
         # 애니메이션
-        if iNumber > 30:
-            iNumber=0
+        if self.iNumber > 30:
+            self.iNumber=0
 
-        iNumber+=0.1
+        self.iNumber+=0.1
 
         # 움직임
-        if self.x <= -500:
+        if self.x <= -600:
             self.x = 1600
 
         self.x -= 3
 
     def draw(self):
-        image[int(iNumber)].draw(self.x, 500)
+        image[int(self.iNumber)].draw(self.x, 500)

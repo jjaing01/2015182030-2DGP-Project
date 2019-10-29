@@ -19,7 +19,8 @@ name = "MainState"
 
 m_ObjectMgr = None
 m_map = None
-m_BackObj=None
+m_BackObj1=None
+m_BackObj2=None
 font = None
 reCreateTime=0
 
@@ -42,7 +43,7 @@ class Map:
 
 
 def enter():
-    global  m_map,m_ObjectMgr,m_BackObj
+    global  m_map,m_ObjectMgr,m_BackObj1,m_BackObj2
 
     m_ObjectMgr = ObjectMgr.CObjectMgr()
     m_ObjectMgr.Add_Object('PLAYER')
@@ -50,13 +51,15 @@ def enter():
     m_ObjectMgr.Add_Object('MON_GREEN', None, 700.0, 300.0)
     m_ObjectMgr.Add_Object('MON_GREEN', None, 700.0, 500.0)
 
-    m_BackObj=BackObject.CBack_Object()
+    m_BackObj1=BackObject.CBack_Object(240,500)
+    m_BackObj2=BackObject.CBack_Object(1300,500)
     m_map = Map()
 
 def exit():
     global m_map,m_ObjectMgr
     del(m_map)
-    del(m_BackObj)
+    del(m_BackObj1)
+    del(m_BackObj2)
     m_ObjectMgr.Release_Object()
 
 def pause():
@@ -117,14 +120,15 @@ def update():
 
     # 패턴 4 - 보스
     elif m_pattern == 3 and m_bIsCreate == True:
-        m_ObjectMgr.Add_Object('MON_BOSS', None, 880, 100)
+        m_ObjectMgr.Add_Object('MON_BOSS', None, 800, 400)
         m_ObjectMgr.Add_Object('MON_KAR', None, 1080, 300)
         m_ObjectMgr.Add_Object('MON_KAR', None, 1080, 500)
         m_ObjectMgr.Add_Object('MON_KAR', None, 900, 400)
         m_ObjectMgr.Add_Object('MON_KAR', None, 900, 200)
         m_bIsCreate = False
 
-    m_BackObj.update()
+    m_BackObj1.update()
+    m_BackObj2.update()
     m_ObjectMgr.Update_Object()
 
     delay(0.015)
@@ -132,7 +136,8 @@ def update():
 def draw():
     clear_canvas()
     m_map.draw()
-    m_BackObj.draw()
+    m_BackObj1.draw()
+    m_BackObj2.draw()
     m_ObjectMgr.Render_Object()
     update_canvas()
 

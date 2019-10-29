@@ -65,8 +65,11 @@ class CObjectMgr:
             m_MonsterLst.append(obj)
 
         elif name == 'MONSTER_BULLET':
-            obj = Monster_Bullet.CMonster_Bullet(x, y)
+            obj = Monster_Bullet.CMonster_Bullet(x, y,False,0)
             m_MBulletLst.append(obj)
+
+        elif name == 'MONSTER_BOSSBULLET':
+            m_MBulletLst.append(_obj)
 
         elif name == 'ITEM':
             m_ItemLst.append(_obj)
