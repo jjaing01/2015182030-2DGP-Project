@@ -8,7 +8,6 @@ image = []
 image_num=None
 iNumber=0
 
-
 def enter():
     global image
     global image_num

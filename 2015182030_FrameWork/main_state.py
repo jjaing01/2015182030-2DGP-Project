@@ -9,11 +9,13 @@ import title_state
 import Player
 import Monster_Green
 import ObjectMgr
+import BackObject
 
 name = "MainState"
 
 m_ObjectMgr = None
 m_map = None
+m_BackObj=None
 font = None
 reCreateTime=0
 
@@ -33,19 +35,21 @@ class Map:
 
 
 def enter():
-    global  m_map,m_ObjectMgr
+    global  m_map,m_ObjectMgr,m_BackObj
 
     m_ObjectMgr = ObjectMgr.CObjectMgr()
     m_ObjectMgr.Add_Object('PLAYER')
-    m_ObjectMgr.Add_Object('MON_GREEN', None, 500.0, 100.0)
-    m_ObjectMgr.Add_Object('MON_GREEN', None, 500.0, 300.0)
-    m_ObjectMgr.Add_Object('MON_GREEN', None, 500.0, 500.0)
+    m_ObjectMgr.Add_Object('MON_GREEN', None, 700.0, 100.0)
+    m_ObjectMgr.Add_Object('MON_GREEN', None, 700.0, 300.0)
+    m_ObjectMgr.Add_Object('MON_GREEN', None, 700.0, 500.0)
 
+    m_BackObj=BackObject.CBack_Object()
     m_map = Map()
 
 def exit():
     global m_map,m_ObjectMgr
     del(m_map)
+    del(m_BackObj)
     m_ObjectMgr.Release_Object()
 
 def pause():
@@ -66,10 +70,10 @@ def handle_events():
 
 
 def update():
-    global  reCreateTime,m_ObjectMgr
+    global  reCreateTime,m_ObjectMgr,m_BackObj
 
     reCreateTime+=1
-    if reCreateTime >= 500:
+    if reCreateTime >= 300:
         print('Create Mon')
         reCreateTime=0
         for mon in range(3):
@@ -77,6 +81,7 @@ def update():
             m_ObjectMgr.Add_Object('MON_GREEN', None, 700, 300)
             m_ObjectMgr.Add_Object('MON_GREEN', None, 700, 500)
 
+    m_BackObj.update()
     m_ObjectMgr.Update_Object()
 
     delay(0.015)
@@ -84,6 +89,7 @@ def update():
 def draw():
     clear_canvas()
     m_map.draw()
+    m_BackObj.draw()
     m_ObjectMgr.Render_Object()
     update_canvas()
 
