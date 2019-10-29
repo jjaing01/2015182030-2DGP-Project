@@ -9,28 +9,21 @@ import game_framework
 import Player_Bullet
 import main_state
 
-name = "Mon_Green"
+name = "Mon_Kar"
 
-m_MonGreen = None
+m_MonKar = None
 
 
-class CMonGreen:
+class CMonKar:
     def __init__(self):
-        self.x, self.y = 500,400
-        self.frame = 0
-        self.image = load_image('Tengai/Resource/Monster/Green.png')
-        self.dir = 1
-        self.iHp = 100
-        self.m_bIsDead=False
-        self.m_Rad=60
-        self.m_AttackTime=0
+        pass
 
     def __init__(self,x,y):
         self.x, self.y = x,y
         self.frame = 0
-        self.image = load_image('Tengai/Resource/Monster/Green.png')
+        self.image = load_image('Tengai/Resource/Monster/Kamikaze.png')
         self.dir = 1
-        self.iHp = 100
+        self.iHp = 300
         self.m_bIsDead=False
         self.m_Rad=60
         self.m_AttackTime = random.randint(0,10)
@@ -50,6 +43,7 @@ class CMonGreen:
             self.m_AttackTime=0
 
         self.m_AttackTime+=1
+
 
         self.frame = (self.frame + 1) % 4
         self.x -= 0.5

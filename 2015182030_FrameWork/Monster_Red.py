@@ -9,26 +9,18 @@ import game_framework
 import Player_Bullet
 import main_state
 
-name = "Mon_Green"
+name = "Mon_Red"
 
-m_MonGreen = None
+m_MonRed = None
 
-
-class CMonGreen:
+class CMonRed:
     def __init__(self):
-        self.x, self.y = 500,400
-        self.frame = 0
-        self.image = load_image('Tengai/Resource/Monster/Green.png')
-        self.dir = 1
-        self.iHp = 100
-        self.m_bIsDead=False
-        self.m_Rad=60
-        self.m_AttackTime=0
+        pass
 
     def __init__(self,x,y):
         self.x, self.y = x,y
         self.frame = 0
-        self.image = load_image('Tengai/Resource/Monster/Green.png')
+        self.image = load_image('Tengai/Resource/Monster/Red.png')
         self.dir = 1
         self.iHp = 100
         self.m_bIsDead=False

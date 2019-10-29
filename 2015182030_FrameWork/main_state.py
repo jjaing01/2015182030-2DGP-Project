@@ -8,6 +8,10 @@ import game_framework
 import title_state
 import Player
 import Monster_Green
+import Monster_Kar
+import Monster_Pot
+import Monster_Red
+import Monster_Boss
 import ObjectMgr
 import BackObject
 

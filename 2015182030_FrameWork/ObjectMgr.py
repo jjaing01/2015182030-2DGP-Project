@@ -7,6 +7,10 @@ from pico2d import *
 import Player
 import Player_Bullet
 import Monster_Green
+import Monster_Kar
+import Monster_Pot
+import Monster_Red
+import Monster_Boss
 import Monster_Bullet
 import CollisionMgr
 
@@ -43,6 +47,18 @@ class CObjectMgr:
 
         elif name == 'MON_GREEN':
             obj = Monster_Green.CMonGreen(x,y)
+            m_MonsterLst.append(obj)
+        elif name == 'MON_RED':
+            obj = Monster_Red.CMonRed(x, y)
+            m_MonsterLst.append(obj)
+        elif name == 'MON_KAR':
+            obj = Monster_Kar.CMonKar(x, y)
+            m_MonsterLst.append(obj)
+        elif name == 'MON_POT':
+            obj = Monster_Pot.CMonPot(x, y)
+            m_MonsterLst.append(obj)
+        elif name == 'MON_BOSS':
+            obj = Monster_Boss.CMonBoss(x, y)
             m_MonsterLst.append(obj)
 
         elif name == 'MONSTER_BULLET':
