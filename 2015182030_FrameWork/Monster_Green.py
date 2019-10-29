@@ -13,6 +13,7 @@ name = "Mon_Green"
 
 m_MonGreen = None
 
+
 class CMonGreen:
     def __init__(self):
         self.x, self.y = 500,400
@@ -22,6 +23,7 @@ class CMonGreen:
         self.iHp = 100
         self.m_bIsDead=False
         self.m_Rad=60
+        self.m_AttackTime=0
 
     def __init__(self,x,y):
         self.x, self.y = x,y
@@ -31,6 +33,7 @@ class CMonGreen:
         self.iHp = 100
         self.m_bIsDead=False
         self.m_Rad=60
+        self.m_AttackTime = random.randint(0,10)
 
     def Dead_Object(self):
         self.m_bIsDead=True
@@ -42,9 +45,16 @@ class CMonGreen:
         if self.iHp == 0:
             self.m_bIsDead=True
 
+        if self.m_AttackTime>80:
+            main_state.m_ObjectMgr.Add_Object('MONSTER_BULLET', None, self.x, self.y)
+            self.m_AttackTime=0
+
+        self.m_AttackTime+=1
+
+
         self.frame = (self.frame + 1) % 4
-        self.x -= 1
+        self.x -= 0.5
 
     def draw(self):
-        self.image.clip_draw(self.frame * 100, 0, 100, 80, self.x,self.y,70,70)
+        self.image.clip_draw(self.frame * 100, 0, 100, 80, self.x,self.y,50,50)
 

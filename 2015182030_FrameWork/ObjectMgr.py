@@ -7,6 +7,7 @@ from pico2d import *
 import Player
 import Player_Bullet
 import Monster_Green
+import Monster_Bullet
 import CollisionMgr
 
 PLAYER, PLAYER_BULLET, MON_GREEN = range(3)
@@ -14,6 +15,7 @@ PLAYER, PLAYER_BULLET, MON_GREEN = range(3)
 m_ObjectLst = []
 m_PlayerLst = []
 m_PBulletLst = []
+m_MBulletLst=[]
 m_MonsterLst = []
 m_EffectLst = []
 
@@ -23,6 +25,7 @@ m_ObjectLst.append(m_PBulletLst)
 m_ObjectLst.append(m_PlayerLst)
 m_ObjectLst.append(m_MonsterLst)
 m_ObjectLst.append(m_EffectLst)
+m_ObjectLst.append(m_MBulletLst)
 
 class CObjectMgr:
 
@@ -33,6 +36,7 @@ class CObjectMgr:
         if name == 'PLAYER':
             obj = Player.CPlayer()
             m_PlayerLst.append(obj)
+
         elif name == 'PLAYER_BULLET':
             obj = Player_Bullet.CPlayer_Bullet(x, y)
             m_PBulletLst.append(obj)
@@ -40,6 +44,11 @@ class CObjectMgr:
         elif name == 'MON_GREEN':
             obj = Monster_Green.CMonGreen(x,y)
             m_MonsterLst.append(obj)
+
+        elif name == 'MONSTER_BULLET':
+            obj = Monster_Bullet.CMonster_Bullet(x, y)
+            m_MBulletLst.append(obj)
+
         elif name == 'EFFECT':
             m_EffectLst.append(_obj)
             pass

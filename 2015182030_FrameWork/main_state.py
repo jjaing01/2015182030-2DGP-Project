@@ -37,9 +37,9 @@ def enter():
 
     m_ObjectMgr = ObjectMgr.CObjectMgr()
     m_ObjectMgr.Add_Object('PLAYER')
-    m_ObjectMgr.Add_Object('MON_GREEN', None, 500, 100)
-    m_ObjectMgr.Add_Object('MON_GREEN', None, 500, 300)
-    m_ObjectMgr.Add_Object('MON_GREEN', None, 500, 500)
+    m_ObjectMgr.Add_Object('MON_GREEN', None, 500.0, 100.0)
+    m_ObjectMgr.Add_Object('MON_GREEN', None, 500.0, 300.0)
+    m_ObjectMgr.Add_Object('MON_GREEN', None, 500.0, 500.0)
 
     m_map = Map()
 
@@ -69,7 +69,7 @@ def update():
     global  reCreateTime,m_ObjectMgr
 
     reCreateTime+=1
-    if reCreateTime >= 100:
+    if reCreateTime >= 500:
         print('Create Mon')
         reCreateTime=0
         for mon in range(3):
