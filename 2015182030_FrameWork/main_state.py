@@ -23,7 +23,8 @@ m_BackObj=None
 font = None
 reCreateTime=0
 
-pattern = 0
+m_pattern = 0
+m_bIsCreate=True
 
 class Font:
     def __init__(self):
@@ -76,16 +77,32 @@ def handle_events():
 
 
 def update():
-    global  reCreateTime,m_ObjectMgr,m_BackObj
+    global  reCreateTime,m_ObjectMgr,m_BackObj,m_pattern,m_bIsCreate
 
-    reCreateTime+=1
-    if reCreateTime >= 300:
-        reCreateTime=0
+    # reCreateTime+=1
+    # if reCreateTime >= 300:
+    #     reCreateTime=0
+    #     for mon in range(3):
+    #         m_ObjectMgr.Add_Object('MON_GREEN', None, 700, 100)
+    #         m_ObjectMgr.Add_Object('MON_GREEN', None, 700, 300)
+    #         m_ObjectMgr.Add_Object('MON_GREEN', None, 700, 500)
 
-        for mon in range(3):
-            m_ObjectMgr.Add_Object('MON_GREEN', None, 700, 100)
-            m_ObjectMgr.Add_Object('MON_GREEN', None, 700, 300)
-            m_ObjectMgr.Add_Object('MON_GREEN', None, 700, 500)
+    tempMonList = m_ObjectMgr.Get_MonsterList()
+
+    if len(tempMonList) <= 0:
+        m_pattern += 1
+        m_bIsCreate = True
+
+    # 패턴 1 
+    if m_pattern == 0 and m_bIsCreate == True:
+        m_ObjectMgr.Add_Object('MON_GREEN', None, 700, 100)
+        m_ObjectMgr.Add_Object('MON_GREEN', None, 700, 300)
+        m_ObjectMgr.Add_Object('MON_GREEN', None, 700, 500)
+        m_ObjectMgr.Add_Object('MON_GREEN', None, 500, 400)
+        m_ObjectMgr.Add_Object('MON_GREEN', None, 500, 200)
+        m_bIsCreate = False
+
+
 
     m_BackObj.update()
     m_ObjectMgr.Update_Object()

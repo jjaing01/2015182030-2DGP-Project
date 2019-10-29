@@ -75,6 +75,9 @@ class CObjectMgr:
             for GameObj in List:
                 GameObj.IsDead()
 
+    def Get_MonsterList(self):
+        return m_MonsterLst
+
     def Update_Object(self):
         global Event
         global m_ObjectLst
