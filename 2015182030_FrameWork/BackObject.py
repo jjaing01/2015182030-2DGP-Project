@@ -37,4 +37,4 @@ class CBack_Object:
         iNumber+=0.1
 
     def draw(self):
-        image[int(iNumber)].draw(400, 500)
+        image[int(iNumber)].draw(540, 500)

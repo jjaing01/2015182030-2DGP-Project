@@ -12,19 +12,26 @@ import main_state
 name = "PlayerBullet"
 
 class CPlayer_Bullet:
-    image = None
-
     def __init__(self):
         pass
 
     def __init__(self, _x, _y):
+        self.rand=random.randint(0,2)
+        print(self.rand)
         self.x, self.y = _x, _y
-        if CPlayer_Bullet.image is None:
-            CPlayer_Bullet.image = load_image('Tengai/Resource/Bullet.png')
+        self.m_image = None
+
+        if  self.m_image is None:
+            address='Tengai/Resource/Bullet/Player/Bullet_Player'
+            extension ='.png'
+            all_address = address+str(self.rand)+extension
+            self.m_image = load_image(all_address)
+
         self.m_bIsDead = False
         self.m_LifeTime = 100
         self.m_iAtk=50
-        self.m_Rad=10
+        self.m_Rad=8
+
 
     def Dead_Object(self):
         self.m_bIsDead = True
@@ -39,4 +46,4 @@ class CPlayer_Bullet:
         self.x += 5
 
     def draw(self):
-        CPlayer_Bullet.image.draw(self.x, self.y, 27, 29)
+        self.m_image.draw(self.x, self.y, 16, 8)
