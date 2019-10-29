@@ -14,7 +14,7 @@ class CItem:
     def __init__(self):
        pass
 
-    def __init__(self,x,y,rand):
+    def __init__(self,x,y):
         self.x, self.y = x,y
         self.frame = 0
         self.rand = random.randint(0,1)

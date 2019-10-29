@@ -20,10 +20,10 @@ PLAYER, PLAYER_BULLET, MON_GREEN = range(3)
 m_ObjectLst = []
 m_PlayerLst = []
 m_PBulletLst = []
-m_MBulletLst=[]
+m_MBulletLst = []
 m_MonsterLst = []
 m_EffectLst = []
-m_ItemLst=[]
+m_ItemLst = []
 
 Event = 0
 
@@ -69,9 +69,7 @@ class CObjectMgr:
             m_MBulletLst.append(obj)
 
         elif name == 'ITEM':
-            rand = random.randint(0,1)
-            obj = Item.CItem(x, y, rand)
-            m_ItemLst.append(obj)
+            m_ItemLst.append(_obj)
 
         elif name == 'EFFECT':
             m_EffectLst.append(_obj)

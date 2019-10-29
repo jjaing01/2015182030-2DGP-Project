@@ -1,6 +1,8 @@
+import random
 import ObjectMgr
 import math
 import Effect
+import Item
 import main_state
 
 
@@ -44,6 +46,12 @@ def Collision_Monster_PLBullet(DstLst, SrcLst):
                     # PosX, PosY, CX, CY, Speed, IsSingleEffect, IsAnimationEndDead, MaxFrame, LifeTime, ScaleX, ScaleY, FileName
                     GameObj = Effect.CEffect(Dst.x, Dst.y, 128, 128, 0.3, False, False, 15, 2.4, 114, 76, "Explode.png")
                     main_state.m_ObjectMgr.Add_Object("EFFECT",GameObj)
+                    # Monster 사망 Item
+                    Rand=random.randint(0,5)
+                    if Rand == 1:
+                        ItemObj = Item.CItem(Dst.x, Dst.y)
+                        main_state.m_ObjectMgr.Add_Object("ITEM", ItemObj)
+
                 pass
 
     return False
