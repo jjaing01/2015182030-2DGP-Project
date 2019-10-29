@@ -88,6 +88,8 @@ def update():
 
     # 패턴 1
     if m_pattern == 0 and m_bIsCreate == True:
+        m_ObjectMgr.Add_Object('ITEM', None, 500, 300)
+        m_ObjectMgr.Add_Object('ITEM', None, 400, 300)
         m_ObjectMgr.Add_Object('MON_KAR', None, 1080, 100)
         m_ObjectMgr.Add_Object('MON_POT', None, 1080, 300)
         m_ObjectMgr.Add_Object('MON_RED', None, 1080, 500)

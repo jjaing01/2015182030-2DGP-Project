@@ -13,6 +13,7 @@ import Monster_Red
 import Monster_Boss
 import Monster_Bullet
 import CollisionMgr
+import Item
 
 PLAYER, PLAYER_BULLET, MON_GREEN = range(3)
 
@@ -22,6 +23,7 @@ m_PBulletLst = []
 m_MBulletLst=[]
 m_MonsterLst = []
 m_EffectLst = []
+m_ItemLst=[]
 
 Event = 0
 
@@ -30,6 +32,7 @@ m_ObjectLst.append(m_PlayerLst)
 m_ObjectLst.append(m_MonsterLst)
 m_ObjectLst.append(m_EffectLst)
 m_ObjectLst.append(m_MBulletLst)
+m_ObjectLst.append(m_ItemLst)
 
 class CObjectMgr:
 
@@ -65,6 +68,11 @@ class CObjectMgr:
             obj = Monster_Bullet.CMonster_Bullet(x, y)
             m_MBulletLst.append(obj)
 
+        elif name == 'ITEM':
+            rand = random.randint(0,1)
+            obj = Item.CItem(x, y, rand)
+            m_ItemLst.append(obj)
+
         elif name == 'EFFECT':
             m_EffectLst.append(_obj)
             pass
@@ -77,6 +85,7 @@ class CObjectMgr:
 
     def Get_MonsterList(self):
         return m_MonsterLst
+
     def Get_PlayerList(self):
         return m_PlayerLst
 
