@@ -77,6 +77,8 @@ class CObjectMgr:
 
     def Get_MonsterList(self):
         return m_MonsterLst
+    def Get_PlayerList(self):
+        return m_PlayerLst
 
     def Update_Object(self):
         global Event

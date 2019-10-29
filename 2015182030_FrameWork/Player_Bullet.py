@@ -35,12 +35,13 @@ class CPlayer_Bullet:
         self.m_bIsDead = True
 
     def update(self):
+        #죽음
         if self.m_bIsDead == True:
             return -1
-
-        if 800 < self.x:
+        # 죽는 조건
+        if 1080 <= self.x:
             self.m_bIsDead = True
-
+        #총알 방향
         self.x += 5
 
     def draw(self):

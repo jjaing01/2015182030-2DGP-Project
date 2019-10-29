@@ -79,30 +79,48 @@ def handle_events():
 def update():
     global  reCreateTime,m_ObjectMgr,m_BackObj,m_pattern,m_bIsCreate
 
-    # reCreateTime+=1
-    # if reCreateTime >= 300:
-    #     reCreateTime=0
-    #     for mon in range(3):
-    #         m_ObjectMgr.Add_Object('MON_GREEN', None, 700, 100)
-    #         m_ObjectMgr.Add_Object('MON_GREEN', None, 700, 300)
-    #         m_ObjectMgr.Add_Object('MON_GREEN', None, 700, 500)
-
     tempMonList = m_ObjectMgr.Get_MonsterList()
 
+    # 패턴마다 나오는 몬스터를 다 죽이면 다음 패턴으로 이동
     if len(tempMonList) <= 0:
         m_pattern += 1
         m_bIsCreate = True
 
-    # 패턴 1 
+    # 패턴 1
     if m_pattern == 0 and m_bIsCreate == True:
-        m_ObjectMgr.Add_Object('MON_GREEN', None, 700, 100)
-        m_ObjectMgr.Add_Object('MON_GREEN', None, 700, 300)
-        m_ObjectMgr.Add_Object('MON_GREEN', None, 700, 500)
-        m_ObjectMgr.Add_Object('MON_GREEN', None, 500, 400)
-        m_ObjectMgr.Add_Object('MON_GREEN', None, 500, 200)
+        m_ObjectMgr.Add_Object('MON_KAR', None, 1080, 100)
+        m_ObjectMgr.Add_Object('MON_POT', None, 1080, 300)
+        m_ObjectMgr.Add_Object('MON_RED', None, 1080, 500)
+        m_ObjectMgr.Add_Object('MON_GREEN', None, 900, 400)
+        m_ObjectMgr.Add_Object('MON_GREEN', None, 900, 200)
         m_bIsCreate = False
 
+    # 패턴 2
+    elif m_pattern == 1 and m_bIsCreate == True:
+        m_ObjectMgr.Add_Object('MON_GREEN', None, 1080, 100)
+        m_ObjectMgr.Add_Object('MON_GREEN', None, 1080, 300)
+        m_ObjectMgr.Add_Object('MON_GREEN', None, 1080, 500)
+        m_ObjectMgr.Add_Object('MON_GREEN', None, 900, 400)
+        m_ObjectMgr.Add_Object('MON_GREEN', None, 900, 200)
+        m_bIsCreate = False
 
+    # 패턴 3
+    elif m_pattern == 2 and m_bIsCreate == True:
+        m_ObjectMgr.Add_Object('MON_GREEN', None, 1080, 100)
+        m_ObjectMgr.Add_Object('MON_GREEN', None, 1080, 300)
+        m_ObjectMgr.Add_Object('MON_GREEN', None, 1080, 500)
+        m_ObjectMgr.Add_Object('MON_GREEN', None, 900, 400)
+        m_ObjectMgr.Add_Object('MON_GREEN', None, 900, 200)
+        m_bIsCreate = False
+
+    # 패턴 4 - 보스
+    elif m_pattern == 3 and m_bIsCreate == True:
+        m_ObjectMgr.Add_Object('MON_BOSS', None, 880, 100)
+        m_ObjectMgr.Add_Object('MON_KAR', None, 1080, 300)
+        m_ObjectMgr.Add_Object('MON_KAR', None, 1080, 500)
+        m_ObjectMgr.Add_Object('MON_KAR', None, 900, 400)
+        m_ObjectMgr.Add_Object('MON_KAR', None, 900, 200)
+        m_bIsCreate = False
 
     m_BackObj.update()
     m_ObjectMgr.Update_Object()

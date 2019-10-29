@@ -32,7 +32,7 @@ class CMonster_Bullet:
         if self.m_bIsDead == True:
             return -1
 
-        if 800 < self.x:
+        if 1080 < self.x:
             self.m_bIsDead = True
 
         self.x -= 5
