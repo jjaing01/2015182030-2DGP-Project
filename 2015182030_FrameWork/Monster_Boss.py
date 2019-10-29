@@ -26,6 +26,8 @@ class CMonBoss:
         self.m_bIsDead=False
         self.m_Rad=100
         self.m_AttackTime = random.randint(0,10)
+        self.max_frame = 3
+        self.Frame_speed = 0.3
 
     def Dead_Object(self):
         self.m_bIsDead = True
@@ -43,13 +45,16 @@ class CMonBoss:
 
         self.m_AttackTime+=1
 
-        self.frame = (self.frame + 1) % 3
-
         if self.y>=500 or self.y<=50:
             self.dir = dir*-1.0
 
         self.y += self.dir
 
+        # Animation
+        self.frame = (self.frame + self.Frame_speed)
+        if self.frame >= self.max_frame:
+            self.frame = 0
+
     def draw(self):
-        self.image.clip_draw(self.frame * 450, 0, 450, 500, self.x,self.y,300,300)
+        self.image.clip_draw(int(self.frame) * 450, 0, 450, 500, self.x,self.y,300,300)
 

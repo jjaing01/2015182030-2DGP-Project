@@ -21,7 +21,9 @@ class CMonKar:
     def __init__(self,x,y):
         self.x, self.y = x,y
         self.frame = 0
-        self.image = load_image('Tengai/Resource/Monster/Kamikaze.png')
+        self.image = None
+        if self.image is None:
+            self.image = load_image('Tengai/Resource/Monster/Kamikaze.png')
         self.dirX = 1.5
         self.dirY = 1.5
         self.iHp = 300
@@ -29,6 +31,8 @@ class CMonKar:
         self.m_Rad=60
         self.m_AttackTime = random.randint(0,10)
         self.myAngle = 0.0 #플레이어를 향하는 각도
+        self.max_frame = 6
+        self.Frame_speed = 0.3
 
     def Dead_Object(self):
         self.m_bIsDead=True
@@ -73,11 +77,12 @@ class CMonKar:
 
         self.x -= math.cos(self.myAngle * math.pi / 180.0) * self.dirX
         self.y -= math.sin(self.myAngle * math.pi / 180.0) * self.dirY
-        #self.x += self.dirX
-        #self.y += self.dirY
 
-        self.frame = (self.frame + 1) % 6
+        # Animation
+        self.frame = (self.frame + self.Frame_speed)
+        if self.frame >= self.max_frame:
+            self.frame = 0
 
     def draw(self):
-        self.image.clip_draw(self.frame * 100, 0, 100, 80, self.x,self.y,50,50)
+        self.image.clip_draw(int(self.frame) * 100, 0, 100, 80, self.x,self.y,50,50)
 

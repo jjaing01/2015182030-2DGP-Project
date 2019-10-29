@@ -20,14 +20,18 @@ class CMonGreen:
 
     def __init__(self,x,y):
         self.x, self.y = x,y
-        self.frame = 0
-        self.image = load_image('Tengai/Resource/Monster/Green.png')
+        self.frame = 1
+        self.image=None
+        if self.image is None:
+            self.image = load_image('Tengai/Resource/Monster/Green.png')
         self.dirX = 0.5
         self.dirY = 0.5
         self.iHp = 100
         self.m_bIsDead=False
         self.m_Rad=60
         self.m_AttackTime = random.randint(0,10)
+        self.max_frame = 4
+        self.Frame_speed = 0.3
 
     def Dead_Object(self):
         self.m_bIsDead = True
@@ -58,8 +62,11 @@ class CMonGreen:
         self.x += self.dirX
         self.y += self.dirY
 
-        self.frame = (self.frame + 1) % 4
+        # Animation
+        self.frame = (self.frame + self.Frame_speed)
+        if self.frame >= self.max_frame:
+                self.frame = 0
 
     def draw(self):
-        self.image.clip_draw(self.frame * 100, 0, 100, 80, self.x,self.y,50,50)
+        self.image.clip_draw(int(self.frame) * 100, 0, 100, 80, self.x,self.y,50,50)
 

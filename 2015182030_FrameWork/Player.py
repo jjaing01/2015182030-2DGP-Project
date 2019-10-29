@@ -19,10 +19,14 @@ class CPlayer:
         self.frame = 0
         self.framenum = 1
         self.image = load_image('Tengai/Resource/Player/Player.png')
+        self.hpUI=None
+        if self.hpUI is None:
+            self.hpUI=load_image('Tengai/Resource/UI/LIFE/LIFE.png')
         self.dir = 1
         self.state='Right'
         self.m_bIsDead=False
         self.m_CreateBulletTime=0
+        self.iHP = 3
 
     def update(self):
         if self.m_bIsDead == True:
@@ -64,3 +68,6 @@ class CPlayer:
 
     def draw(self):
         self.image.clip_draw(self.frame * 32, 32*self.dir, 32, 32, self.x,self.y,70,70)
+        self.hpUI.draw(15,580)
+        self.hpUI.draw(47,580)
+        self.hpUI.draw(79,580)
