@@ -6,7 +6,6 @@ import win32api
 from pico2d import *
 
 import game_framework
-
 import main_state
 
 name = "PlayerBullet"
@@ -17,7 +16,6 @@ class CPlayer_Bullet:
 
     def __init__(self, _x, _y):
         self.rand=random.randint(0,2)
-        print(self.rand)
         self.x, self.y = _x, _y
         self.m_image = None
 

@@ -23,6 +23,8 @@ m_BackObj=None
 font = None
 reCreateTime=0
 
+pattern = 0
+
 class Font:
     def __init__(self):
         self.image = load_image('pause.png')
@@ -78,8 +80,8 @@ def update():
 
     reCreateTime+=1
     if reCreateTime >= 300:
-        print('Create Mon')
         reCreateTime=0
+
         for mon in range(3):
             m_ObjectMgr.Add_Object('MON_GREEN', None, 700, 100)
             m_ObjectMgr.Add_Object('MON_GREEN', None, 700, 300)
