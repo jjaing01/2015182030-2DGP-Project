@@ -50,7 +50,7 @@ def handle_events():
 def draw():
     global iNumber
     clear_canvas()
-    image[iNumber].draw(400, 300)
+    image[iNumber].draw(540, 300)
     update_canvas()
 
 

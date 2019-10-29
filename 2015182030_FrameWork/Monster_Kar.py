@@ -24,7 +24,7 @@ class CMonKar:
         self.image = None
         if self.image is None:
             self.image = load_image('Tengai/Resource/Monster/Kamikaze.png')
-        self.dirX = 1.5
+        self.dirX = 1.7
         self.dirY = 1.5
         self.iHp = 300
         self.m_bIsDead=False

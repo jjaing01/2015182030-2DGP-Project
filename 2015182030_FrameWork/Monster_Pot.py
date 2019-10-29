@@ -23,8 +23,8 @@ class CMonPot:
         self.image = None
         if self.image is None:
             self.image = load_image('Tengai/Resource/Monster/Pot.png')
-        self.dirX = 1.0
-        self.dirY = 1.0
+        self.dirX = 2.0
+        self.dirY = 2.0
         self.iHp = 400
         self.m_bIsDead=False
         self.m_Rad=60

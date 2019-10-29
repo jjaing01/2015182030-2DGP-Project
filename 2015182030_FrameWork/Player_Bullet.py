@@ -42,7 +42,7 @@ class CPlayer_Bullet:
         if 1080 <= self.x:
             self.m_bIsDead = True
         #총알 방향
-        self.x += 5
+        self.x += 7
 
     def draw(self):
         self.m_image.draw(self.x, self.y, 16, 8)
