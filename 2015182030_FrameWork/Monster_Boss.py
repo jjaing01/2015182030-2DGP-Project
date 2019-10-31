@@ -77,6 +77,8 @@ class CMonBoss:
             self.AtkPattern=0
 
         # 2.유도탄 3발
+        # 3.레이저
+        # 4.투명
 
         #움직임
         self.Change_Dir()

@@ -127,6 +127,8 @@ def update():
         m_ObjectMgr.Add_Object('MON_KAR', None, 900, 200)
         m_bIsCreate = False
 
+    # 보스 죽을 시 다음 스테이지 전환
+
     m_BackObj1.update()
     m_BackObj2.update()
     m_ObjectMgr.Update_Object()
