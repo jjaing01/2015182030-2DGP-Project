@@ -53,6 +53,8 @@ class CItem:
 
         self.frame = (self.frame + 1) % 1
 
+        
+
     def draw(self):
         if self.rand == 0:
             self.image.clip_draw(self.frame * 192, 0, 192, 98, self.x,self.y,50,50)

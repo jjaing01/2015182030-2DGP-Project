@@ -127,7 +127,7 @@ def update():
         m_ObjectMgr.Add_Object('MON_KAR', None, 900, 200)
         m_bIsCreate = False
 
-    
+
 
     m_BackObj1.update()
     m_BackObj2.update()
