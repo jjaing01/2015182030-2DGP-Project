@@ -35,9 +35,9 @@ class CItem:
         self.m_bIsDead = True
 
     def Change_Dir(self):
-        if self.x<=200 or self.x>1080:
+        if self.x<=200 or self.x > 1080:
             self.dirX = self.dirX * -1.0
-        if self.y>=600 or self.y<=0:
+        if self.y>=600 or self.y <= 0:
             self.dirY = self.dirY * -1.0
 
     def update(self):
@@ -53,7 +53,7 @@ class CItem:
 
         self.frame = (self.frame + 1) % 1
 
-        
+
 
     def draw(self):
         if self.rand == 0:

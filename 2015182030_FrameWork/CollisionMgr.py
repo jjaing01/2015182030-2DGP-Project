@@ -56,3 +56,23 @@ def Collision_Monster_PLBullet(DstLst, SrcLst):
 
     return False
     pass
+
+
+# Player & Item
+def Collision_Player_Item(DstLst, SrcLst):
+    # DstLst - Player
+    # SrcLst - Item
+
+    for Dst in DstLst:
+        for Src in SrcLst:
+            if Check_Collision(Dst, Src):
+                # Delete Bullet
+                Src.Dead_Object()
+                # Monster 사망 Effect
+                # PosX, PosY, CX, CY, Speed, IsSingleEffect, IsAnimationEndDead, MaxFrame, LifeTime, ScaleX, ScaleY, FileName
+                GameObj = Effect.CEffect(Src.x, Src.y, 128, 128, 0.3, False, False, 15, 2.4, 114, 76, "Explode.png")
+                main_state.m_ObjectMgr.Add_Object("EFFECT", GameObj)
+            pass
+
+    return False
+    pass

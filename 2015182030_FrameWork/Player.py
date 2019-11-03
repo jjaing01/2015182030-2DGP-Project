@@ -27,6 +27,7 @@ class CPlayer:
         self.m_bIsDead=False
         self.m_CreateBulletTime=0
         self.iHP = 3
+        self.m_Rad = 60
 
     def update(self):
         if self.m_bIsDead == True:
