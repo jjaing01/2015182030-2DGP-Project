@@ -67,7 +67,7 @@ class CMonKar:
             main_state.m_ObjectMgr.Add_Object('MONSTER_BULLET', None, self.x, self.y)
             self.m_AttackTime=0
 
-        self.m_AttackTime+=1
+        self.m_AttackTime += 1
 
         # 움직임
         tempMonList = main_state.m_ObjectMgr.Get_PlayerList()
