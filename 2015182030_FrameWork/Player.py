@@ -23,7 +23,7 @@ class CPlayer:
         if self.hpUI is None:
             self.hpUI=load_image('Tengai/Resource/UI/LIFE/LIFE.png')
         self.dir = 1
-        self.state='Right'
+        self.state = 'Right'
         self.m_bIsDead=False
         self.m_CreateBulletTime=0
         self.iHP = 3

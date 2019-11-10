@@ -65,7 +65,7 @@ class CMonGreen:
         # Animation
         self.frame = (self.frame + self.Frame_speed)
         if self.frame >= self.max_frame:
-                self.frame = 0 
+                self.frame = 0
 
     def draw(self):
         self.image.clip_draw(int(self.frame) * 100, 0, 100, 80, self.x,self.y,50,50)
