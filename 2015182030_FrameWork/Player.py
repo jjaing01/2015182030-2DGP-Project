@@ -19,7 +19,7 @@ class CPlayer:
         self.frame = 0
         self.framenum = 1
         self.image = load_image('Tengai/Resource/Player/Player.png')
-        self.hpUI=None
+        self.hpUI = None
         if self.hpUI is None:
             self.hpUI=load_image('Tengai/Resource/UI/LIFE/LIFE.png')
         self.dir = 1
