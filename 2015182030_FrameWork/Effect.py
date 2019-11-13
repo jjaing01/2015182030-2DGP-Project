@@ -25,7 +25,7 @@ class CEffect:
         if CEffect.image[0] is None:
             CEffect.image[0] = load_image("Tengai/Resource/UI/Explode/Explode.png")
         if CEffect.image[1] is None:
-            #CEffect.image[1] = load_image("Resource/Effect/dust.png")
+            CEffect.image[1] = load_image("Tengai/Resource/UI/Effect5/Effect5.png")
             pass
 
     def Handle_Events(self):
@@ -60,8 +60,9 @@ class CEffect:
         if not self.IsDead:
             if self.filename == "Explode.png":
                 index = 0
-            # elif self.filename == "dust.png":
-            #     index = 1
+
+            elif self.filename == "Effect5.png":
+                index = 1
 
             if not self.isSingleEffect:
                 self.image[index].clip_draw(int(self.frame) * self.cx, 0, self.cx, self.cy, self.x, self.y, self.scaleX,

@@ -70,7 +70,7 @@ def Collision_Player_Item(DstLst, SrcLst):
                 Src.Dead_Object()
                 # Monster 사망 Effect
                 # PosX, PosY, CX, CY, Speed, IsSingleEffect, IsAnimationEndDead, MaxFrame, LifeTime, ScaleX, ScaleY, FileName
-                GameObj = Effect.CEffect(Src.x, Src.y, 128, 128, 0.3, False, False, 15, 2.4, 114, 76, "Explode.png")
+                GameObj = Effect.CEffect(Src.x, Src.y, 120, 120, 0.3, False, False, 20, 5.4, 114, 76, "Effect5.png")
                 main_state.m_ObjectMgr.Add_Object("EFFECT", GameObj)
             pass
 
