@@ -76,3 +76,19 @@ def Collision_Player_Item(DstLst, SrcLst):
 
     return False
     pass
+
+
+def Collision_Skill_1(DstLst):
+    # DstLst - Player
+    # SrcLst - Item
+
+    for Dst in DstLst:
+        Dst.Dead_Object()
+        # Monster 사망 Effect
+        # PosX, PosY, CX, CY, Speed, IsSingleEffect, IsAnimationEndDead, MaxFrame, LifeTime, ScaleX, ScaleY, FileName
+        GameObj = Effect.CEffect(Dst.x, Dst.y, 128, 128, 0.3, False, False, 15, 2.4, 114, 76, "Explode.png")
+        main_state.m_ObjectMgr.Add_Object("EFFECT", GameObj)
+        pass
+
+    return False
+    pass

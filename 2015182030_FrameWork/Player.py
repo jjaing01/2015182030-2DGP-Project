@@ -9,6 +9,8 @@ import game_framework
 import Player_Bullet
 import main_state
 import Effect
+import ObjectMgr
+import CollisionMgr
 
 name = "Player"
 
@@ -68,8 +70,9 @@ class CPlayer:
             if self.m_SkillCnt>= 1:
                 self.m_SkillCnt -= 1
                 # PosX, PosY, CX, CY, Speed, IsSingleEffect, IsAnimationEndDead, MaxFrame, LifeTime, ScaleX, ScaleY, FileName
-                GameObj = Effect.CEffect(self.x,60, 256, 256, 0.3, False, False, 64, 23, 800, 800, "PSkill.png")
+                GameObj = Effect.CEffect(self.x,60, 256, 256, 0.3, False, False, 64, 10, 800, 800, "PSkill.png")
                 main_state.m_ObjectMgr.Add_Object("EFFECT", GameObj)
+                CollisionMgr.Collision_Skill_1(ObjectMgr.m_MonsterLst)
 
 
         if self.m_CreateBulletTime <= 5:
