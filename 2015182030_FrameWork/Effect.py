@@ -4,7 +4,7 @@ time = 0.0
 
 
 class CEffect:
-    image = [None, None]
+    image = [None, None, None]
 
     def __init__(self, PosX, PosY, CX, CY, Speed, IsSingleEffect, IsAnimationEndDead, MaxFrame, LifeTime, ScaleX, ScaleY, FileName):
         self.IsDead = False
@@ -26,6 +26,8 @@ class CEffect:
             CEffect.image[0] = load_image("Tengai/Resource/UI/Explode/Explode.png")
         if CEffect.image[1] is None:
             CEffect.image[1] = load_image("Tengai/Resource/UI/Effect5/Effect5.png")
+        if CEffect.image[2] is None:
+            CEffect.image[2] = load_image("Tengai/Resource/UI/PSkill/PSkill.png")
             pass
 
     def Handle_Events(self):
@@ -63,6 +65,9 @@ class CEffect:
 
             elif self.filename == "Effect5.png":
                 index = 1
+
+            elif self.filename == "PSkill.png":
+                index = 2
 
             if not self.isSingleEffect:
                 self.image[index].clip_draw(int(self.frame) * self.cx, 0, self.cx, self.cy, self.x, self.y, self.scaleX,

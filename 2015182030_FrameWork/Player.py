@@ -8,6 +8,7 @@ from pico2d import *
 import game_framework
 import Player_Bullet
 import main_state
+import Effect
 
 name = "Player"
 
@@ -28,6 +29,7 @@ class CPlayer:
         self.m_CreateBulletTime=0
         self.iHP = 3
         self.m_Rad = 60
+        self.m_SkillCnt = 1
 
     def update(self):
         if self.m_bIsDead == True:
@@ -61,6 +63,14 @@ class CPlayer:
         if win32api.GetAsyncKeyState(0x20) & 0x8000:  # SPACE
             if self.m_CreateBulletTime > 4:
                 main_state.m_ObjectMgr.Add_Object('PLAYER_BULLET',None,self.x,self.y)
+
+        if win32api.GetAsyncKeyState(0x31) & 0x8000:  # 1
+            if self.m_SkillCnt>= 1:
+                self.m_SkillCnt -= 1
+                # PosX, PosY, CX, CY, Speed, IsSingleEffect, IsAnimationEndDead, MaxFrame, LifeTime, ScaleX, ScaleY, FileName
+                GameObj = Effect.CEffect(self.x,60, 256, 256, 0.3, False, False, 64, 23, 800, 800, "PSkill.png")
+                main_state.m_ObjectMgr.Add_Object("EFFECT", GameObj)
+
 
         if self.m_CreateBulletTime <= 5:
             self.m_CreateBulletTime += 1
