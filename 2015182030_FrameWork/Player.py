@@ -67,7 +67,7 @@ class CPlayer:
                 main_state.m_ObjectMgr.Add_Object('PLAYER_BULLET',None,self.x,self.y)
 
         if win32api.GetAsyncKeyState(0x31) & 0x8000:  # 1
-            if self.m_SkillCnt>= 1:
+            if self.m_SkillCnt >= 1:
                 self.m_SkillCnt -= 1
                 # PosX, PosY, CX, CY, Speed, IsSingleEffect, IsAnimationEndDead, MaxFrame, LifeTime, ScaleX, ScaleY, FileName
                 GameObj = Effect.CEffect(self.x,60, 256, 256, 0.3, False, False, 64, 10, 800, 800, "PSkill.png")
