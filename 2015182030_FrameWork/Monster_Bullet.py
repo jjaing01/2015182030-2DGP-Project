@@ -25,6 +25,7 @@ class CMonster_Bullet:
         self.m_LifeTime = 100
         self.m_iAtk=10
         self.m_Rad=10
+        self.m_fSpeed = 250
 
     def __init__(self, _x, _y, randDir,_angle):
         self.x, self.y = _x, _y
@@ -36,6 +37,7 @@ class CMonster_Bullet:
         self.m_Rad = 10
         self.m_bIsRandomShoot = randDir
         self.m_Angle = _angle
+        self.m_fSpeed = 250
 
     def Dead_Object(self):
         self.m_bIsDead = True
@@ -44,14 +46,14 @@ class CMonster_Bullet:
         if self.m_bIsDead == True:
             return -1
 
-        if 0>= self.x:
+        if 0 >= self.x:
             self.m_bIsDead = True
 
         if self.m_bIsRandomShoot == True:
-            self.x -= math.cos(self.m_Angle * math.pi / 180.0) * 5.0
-            self.y -= math.sin(self.m_Angle * math.pi / 180.0) * 5.0
+            self.x -= math.cos(self.m_Angle * math.pi / 180.0) * self.m_fSpeed * game_framework.frame_time
+            self.y -= math.sin(self.m_Angle * math.pi / 180.0) * self.m_fSpeed * game_framework.frame_time
         else:
-            self.x -= 5
+            self.x -= self.m_fSpeed * game_framework.frame_time
 
     def draw(self):
         CMonster_Bullet.image.draw(self.x, self.y, 27, 29)

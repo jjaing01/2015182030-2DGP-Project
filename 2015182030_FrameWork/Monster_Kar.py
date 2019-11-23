@@ -24,8 +24,8 @@ class CMonKar:
         self.image = None
         if self.image is None:
             self.image = load_image('Tengai/Resource/Monster/Kamikaze.png')
-        self.dirX = 1.7
-        self.dirY = 1.5
+        self.dirX = 1.0
+        self.dirY = 1.0
         self.iHp = 300
         self.m_bIsDead=False
         self.m_Rad=60
@@ -33,7 +33,7 @@ class CMonKar:
         self.myAngle = 0.0 #플레이어를 향하는 각도
         self.max_frame = 6
         self.Frame_speed = 0.3
-        self.m_fSpeed = 180
+        self.m_fSpeed = 300
 
     def Dead_Object(self):
         self.m_bIsDead=True
