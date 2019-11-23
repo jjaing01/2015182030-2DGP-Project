@@ -32,6 +32,7 @@ class CMonBoss:
         self.Frame_speed = 0.3
         self.AtkPattern = 0
         self.bIsAtkPattern = True
+        self.m_fSpeed = 50
 
     def Dead_Object(self):
         self.m_bIsDead = True
@@ -83,8 +84,8 @@ class CMonBoss:
         #움직임
         self.Change_Dir()
 
-        self.y += self.dirY
-        self.x += self.dirX
+        self.y += self.dirY * self.m_fSpeed * game_framework.frame_time
+        self.x += self.dirX * self.m_fSpeed * game_framework.frame_time
 
         # Animation
         self.frame = (self.frame + self.Frame_speed)
