@@ -23,14 +23,15 @@ class CMonPot:
         self.image = None
         if self.image is None:
             self.image = load_image('Tengai/Resource/Monster/Pot.png')
-        self.dirX = 2.0
-        self.dirY = 2.0
+        self.dirX = 1.0
+        self.dirY = 1.0
         self.iHp = 400
         self.m_bIsDead=False
         self.m_Rad=60
         self.m_AttackTime = random.randint(0,10)
         self.max_frame = 4
         self.Frame_speed = 0.3
+        self.m_fSpeed = 100
 
     def Dead_Object(self):
         self.m_bIsDead=True
@@ -58,8 +59,8 @@ class CMonPot:
         # 움직임
         self.Change_Dir()
 
-        self.x += self.dirX
-        self.y += self.dirY
+        self.x += self.dirX * self.m_fSpeed * game_framework.frame_time
+        self.y += self.dirY * self.m_fSpeed * game_framework.frame_time
 
         # Animation
         self.frame = (self.frame + self.Frame_speed)
