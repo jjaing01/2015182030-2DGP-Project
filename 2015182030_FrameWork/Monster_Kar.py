@@ -33,6 +33,7 @@ class CMonKar:
         self.myAngle = 0.0 #플레이어를 향하는 각도
         self.max_frame = 6
         self.Frame_speed = 0.3
+        self.m_fSpeed = 180
 
     def Dead_Object(self):
         self.m_bIsDead=True
@@ -75,8 +76,8 @@ class CMonKar:
 
         self.Change_Dir()
 
-        self.x -= math.cos(self.myAngle * math.pi / 180.0) * self.dirX
-        self.y -= math.sin(self.myAngle * math.pi / 180.0) * self.dirY
+        self.x -= math.cos(self.myAngle * math.pi / 180.0) * self.dirX * self.m_fSpeed * game_framework.frame_time
+        self.y -= math.sin(self.myAngle * math.pi / 180.0) * self.dirY * self.m_fSpeed * game_framework.frame_time
 
         # Animation
         self.frame = (self.frame + self.Frame_speed)

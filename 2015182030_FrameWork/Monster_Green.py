@@ -32,6 +32,7 @@ class CMonGreen:
         self.m_AttackTime = random.randint(0,10)
         self.max_frame = 4
         self.Frame_speed = 0.3
+        self.m_fSpeed = 100
 
     def Dead_Object(self):
         self.m_bIsDead = True
@@ -59,8 +60,8 @@ class CMonGreen:
         # 움직임
         self.Change_Dir()
 
-        self.x += self.dirX
-        self.y += self.dirY
+        self.y += self.dirY * self.m_fSpeed * game_framework.frame_time
+        self.x += self.dirX * self.m_fSpeed * game_framework.frame_time
 
         # Animation
         self.frame = (self.frame + self.Frame_speed)
