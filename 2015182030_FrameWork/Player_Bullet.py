@@ -29,7 +29,7 @@ class CPlayer_Bullet:
         self.m_LifeTime = 100
         self.m_iAtk=50
         self.m_Rad=8
-
+        self.m_fSpeed = 350
 
     def Dead_Object(self):
         self.m_bIsDead = True
@@ -42,7 +42,7 @@ class CPlayer_Bullet:
         if 1080 <= self.x:
             self.m_bIsDead = True
         #총알 방향
-        self.x += 7
+        self.x += self.m_fSpeed * game_framework.frame_time
 
     def draw(self):
         self.m_image.draw(self.x, self.y, 16, 8)
