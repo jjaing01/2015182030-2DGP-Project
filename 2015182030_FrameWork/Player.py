@@ -139,7 +139,8 @@ class CPlayer:
             self.m_SkillCnt += 1
 
     def Set_Life(self):
-        self.iHP -= 1
+        if self.iHP > 0:
+            self.iHP -= 1
 
     def HP_plus(self):
         if self.iHP < 4:

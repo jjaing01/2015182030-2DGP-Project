@@ -26,10 +26,10 @@ class CMonBoss:
         self.dirY = 1.0
         self.iHp = 5000
         self.m_bIsDead=False
-        self.m_Rad=100
+        self.m_Rad = 130
         self.m_AttackTime = random.randint(0,10)
         self.max_frame = 3
-        self.Frame_speed = 0.3
+        self.Frame_speed = 8.0 * game_framework.frame_time
         self.AtkPattern = 0
         self.bIsAtkPattern = True
         self.m_fSpeed = 50
@@ -74,14 +74,17 @@ class CMonBoss:
             main_state.m_ObjectMgr.Add_Object('MONSTER_BOSSBULLET',Monster_Bullet.CMonster_Bullet(self.x, self.y, True, 75))
             main_state.m_ObjectMgr.Add_Object('MONSTER_BOSSBULLET',Monster_Bullet.CMonster_Bullet(self.x, self.y, True, 45))
             main_state.m_ObjectMgr.Add_Object('MONSTER_BOSSBULLET',Monster_Bullet.CMonster_Bullet(self.x, self.y, True, 15))
-            self.bIsAtkPattern=False
-            self.AtkPattern=0
+            self.bIsAtkPattern = False
+            self.AtkPattern = 0
 
         # 2.유도탄 3발
         # 3.레이저
         # 4.투명
 
         #움직임
+        if self.iHp <= 3000:
+            self.m_fSpeed = 200
+
         self.Change_Dir()
 
         self.y += self.dirY * self.m_fSpeed * game_framework.frame_time
