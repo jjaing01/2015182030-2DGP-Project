@@ -36,6 +36,7 @@ class CPlayer_Shield:
         self.m_Rad = 8
         self.m_fSpeed = 350
         self.iNumber = 0.0
+        self.m_fAngle = 0.0
 
     def Dead_Object(self):
         self.m_bIsDead = True
@@ -47,8 +48,17 @@ class CPlayer_Shield:
         # 죽는 조건
         if 1080 <= self.x:
             self.m_bIsDead = True
-        #총알 방향
-        self.x += self.m_fSpeed * game_framework.frame_time
+
+        self.m_fAngle += 800.0 * game_framework.frame_time
+
+        #쉴드 방향
+        tempList = main_state.m_ObjectMgr.Get_PlayerList()
+
+        targetX,targetY = tempList[0].Get_Position()
+
+        self.x = targetX + math.cos(self.m_fAngle * 3.141592 / 180.0) * 100.0
+        self.y = targetY - math.sin(self.m_fAngle * 3.141592 / 180.0) * 100.0
+
 
         # 애니메이션
         if self.iNumber > 4.0:

@@ -142,3 +142,6 @@ class CPlayer:
     def HP_plus(self):
         if self.iHP < 4:
             self.iHP += 1
+
+    def Get_Position(self):
+        return self.x,self.y
