@@ -21,6 +21,7 @@ PLAYER, PLAYER_BULLET, MON_GREEN = range(3)
 m_ObjectLst = []
 m_PlayerLst = []
 m_PBulletLst = []
+m_ShieldLst = []
 m_MBulletLst = []
 m_MonsterLst = []
 m_EffectLst = []
@@ -34,6 +35,7 @@ m_ObjectLst.append(m_MonsterLst)
 m_ObjectLst.append(m_EffectLst)
 m_ObjectLst.append(m_MBulletLst)
 m_ObjectLst.append(m_ItemLst)
+m_ObjectLst.append(m_ShieldLst)
 
 class CObjectMgr:
 
@@ -51,8 +53,7 @@ class CObjectMgr:
 
         elif name == 'PLAYER_SHIELD':
             obj = Player_Shield.CPlayer_Shield(x, y)
-            m_PBulletLst.append(obj)
-            print("Create Shiled")
+            m_ShieldLst.append(obj)
 
         elif name == 'MON_GREEN':
             obj = Monster_Green.CMonGreen(x,y)
@@ -103,6 +104,7 @@ class CObjectMgr:
         CollisionMgr.Collision_Monster_PLBullet(m_MonsterLst, m_PBulletLst)
         CollisionMgr.Collision_Player_Item(m_PlayerLst, m_ItemLst)
         CollisionMgr.Collision_Monster_Player(m_MonsterLst,m_PlayerLst)
+        CollisionMgr.Collision_Shield_MBullet(m_ShieldLst,m_MBulletLst)
 
         for List in m_ObjectLst:
             for GameObj in List:

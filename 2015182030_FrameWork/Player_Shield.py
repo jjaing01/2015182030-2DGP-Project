@@ -31,9 +31,9 @@ class CPlayer_Shield:
             image.append(image_num)
 
         self.m_bIsDead = False
-        self.m_LifeTime = 100
+        self.m_LifeTime = 0.0
         self.m_iAtk = 50
-        self.m_Rad = 8
+        self.m_Rad = 10
         self.m_fSpeed = 350
         self.iNumber = 0.0
         self.m_fAngle = 0.0
@@ -46,10 +46,11 @@ class CPlayer_Shield:
         if self.m_bIsDead == True:
             return -1
         # 죽는 조건
-        if 1080 <= self.x:
+        if self.m_LifeTime > 1000.0:
             self.m_bIsDead = True
 
         self.m_fAngle += 800.0 * game_framework.frame_time
+        self.m_LifeTime += 50.0 * game_framework.frame_time
 
         #쉴드 방향
         tempList = main_state.m_ObjectMgr.Get_PlayerList()
