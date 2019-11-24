@@ -84,7 +84,7 @@ class CPlayer:
 
 
         if self.m_CreateBulletTime <= 5:
-            self.m_CreateBulletTime += 1
+            self.m_CreateBulletTime += 100 * game_framework.frame_time
         else:
             self.m_CreateBulletTime = 0
 
@@ -123,3 +123,7 @@ class CPlayer:
 
     def Set_Life(self):
         self.iHP -= 1
+
+    def HP_plus(self):
+        if self.iHP < 4:
+            self.iHP += 1

@@ -27,7 +27,6 @@ def Collision_Monster_Player(DstLst, SrcLst):
         for Src in SrcLst:
             if Check_Collision(Dst, Src):
                 # Player Hp 감소
-                #Dst.iHp = 0
                 Src.Set_Life()
                 # Monster 사망 시 Player Exp 증가.
                 if Dst.iHp <= 0:
@@ -89,6 +88,8 @@ def Collision_Player_Item(DstLst, SrcLst):
                 option = Src.Get_ItemOption()
                 if option == 0:
                     Dst.Skill_plus()
+                if option == 1:
+                    Dst.HP_plus()
                 # Delete Bullet
                 Src.Dead_Object()
                 # Monster 사망 Effect
