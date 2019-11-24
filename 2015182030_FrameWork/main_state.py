@@ -142,14 +142,12 @@ def update():
         m_ObjectMgr.Add_Object('MON_KAR', None, 900, 200)
         m_bIsCreate = False
 
-
-
     m_BackObj1.update()
     m_BackObj2.update()
     m_map.update()
     m_ObjectMgr.Update_Object()
 
-    delay(0.015)
+    #delay(0.015)
 
 def draw():
     clear_canvas()

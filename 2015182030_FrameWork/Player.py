@@ -77,23 +77,26 @@ class CPlayer:
                 main_state.m_ObjectMgr.Add_Object('PLAYER_BULLET',None,self.x,self.y)
 
         if win32api.GetAsyncKeyState(0x31) & 0x8000:  # 1
-                if self.m_bIsSkill_Tiger == False:
-                    # PosX, PosY, CX, CY, Speed, IsSingleEffect, IsAnimationEndDead, MaxFrame, LifeTime, ScaleX, ScaleY, FileName
-                    GameObj = Effect.CEffect(self.x,60, 256, 256, 0.3, False, False, 64, 10, 800, 800, "PSkill.png")
-                    main_state.m_ObjectMgr.Add_Object("EFFECT", GameObj)
-                    CollisionMgr.Collision_Skill_1(ObjectMgr.m_MonsterLst)
+            if self.m_bIsSkill_Tiger == False:
+                # PosX, PosY, CX, CY, Speed, IsSingleEffect, IsAnimationEndDead, MaxFrame, LifeTime, ScaleX, ScaleY, FileName
+                GameObj = Effect.CEffect(self.x,60, 256, 256, 0.3, False, False, 64, 10, 800, 800, "PSkill.png")
+                main_state.m_ObjectMgr.Add_Object("EFFECT", GameObj)
+                CollisionMgr.Collision_Skill_1(ObjectMgr.m_MonsterLst)
 
-                self.m_bIsSkill_Tiger = True
+            self.m_bIsSkill_Tiger = True
 
+        if win32api.GetAsyncKeyState(0x32) & 0x8000:  # 2
+            if self.m_CreateBulletTime > 4:
+                main_state.m_ObjectMgr.Add_Object("PLAYER_SHIELD", None, self.x, self.y)
 
         if self.m_CreateBulletTime <= 5:
-            self.m_CreateBulletTime += 100 * game_framework.frame_time
+            self.m_CreateBulletTime += 50 * game_framework.frame_time
         else:
             self.m_CreateBulletTime = 0
 
         if self.m_bIsSkill_Tiger:
-            if self.m_CreateTigerSkillTime <= 5:
-                self.m_CreateTigerSkillTime += 100 * game_framework.frame_time
+            if self.m_CreateTigerSkillTime <= 50:
+                self.m_CreateTigerSkillTime += 10 * game_framework.frame_time
             else:
                 self.m_CreateTigerSkillTime = 0
                 if self.m_SkillCnt >= 1:

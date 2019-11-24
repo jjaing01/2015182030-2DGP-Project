@@ -13,6 +13,7 @@ import Monster_Red
 import Monster_Boss
 import Monster_Bullet
 import CollisionMgr
+import Player_Shield
 import Item
 
 PLAYER, PLAYER_BULLET, MON_GREEN = range(3)
@@ -47,6 +48,11 @@ class CObjectMgr:
         elif name == 'PLAYER_BULLET':
             obj = Player_Bullet.CPlayer_Bullet(x, y)
             m_PBulletLst.append(obj)
+
+        elif name == 'PLAYER_SHIELD':
+            obj = Player_Shield.CPlayer_Shield(x, y)
+            m_PBulletLst.append(obj)
+            print("Create Shiled")
 
         elif name == 'MON_GREEN':
             obj = Monster_Green.CMonGreen(x,y)
