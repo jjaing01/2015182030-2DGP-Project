@@ -25,7 +25,7 @@ class CMonBoss:
         self.image = load_image('Tengai/Resource/Monster/Boss.png')
         self.dirX = 1.0
         self.dirY = 1.0
-        self.iHp = 5000
+        self.iHp = 10000
         self.m_bIsDead=False
         self.m_Rad = 130
         self.m_AttackTime = random.randint(0,10)
@@ -60,7 +60,7 @@ class CMonBoss:
 
         self.m_AttackTime += 10 * game_framework.frame_time
 
-        self.AtkPattern = random.randint(0,2)
+        self.AtkPattern = random.randint(0,3)
 
         # 공격 패턴
         # 1. 난사 1회

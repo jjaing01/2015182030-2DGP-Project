@@ -25,7 +25,7 @@ class CPlayer_Shield:
         address='Tengai/Resource/Shield/'
         extension ='.png'
 
-        for n in range(0, 4):
+        for n in range(0, 5):
             all_address = address + str(n) + extension
             image_num = load_image(all_address)
             image.append(image_num)
@@ -63,9 +63,9 @@ class CPlayer_Shield:
 
         # 애니메이션
         if self.iNumber > 4.0:
-            self.iNumber = 3.0
+            self.iNumber = 4.0
 
         self.iNumber += 5 * game_framework.frame_time
 
     def draw(self):
-        image[int(self.iNumber)].draw(self.x, self.y,100,100)
+        image[int(self.iNumber)].draw(self.x, self.y,90,90)

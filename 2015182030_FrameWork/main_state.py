@@ -38,7 +38,7 @@ class Map:
     def __init__(self):
         self.image = load_image('Tengai/Resource/Map/forest.png')
         self.image2 = load_image('Tengai/Resource/Map/forest.png')
-        self.m_ScrollX = 10.0
+        self.m_ScrollX = 5.0
         self.m_Map1_ScrollX = 540.0
         self.m_Map2_ScrollX = 1620.0
 

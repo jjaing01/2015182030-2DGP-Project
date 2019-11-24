@@ -34,7 +34,7 @@ class CMonster_Bullet:
         self.m_bIsDead = False
         self.m_LifeTime = 100
         self.m_iAtk = 10
-        self.m_Rad = 10
+        self.m_Rad = 13
         self.m_bIsRandomShoot = randDir
         self.m_Angle = _angle
         self.m_fSpeed = 250
