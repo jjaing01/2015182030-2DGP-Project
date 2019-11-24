@@ -37,10 +37,25 @@ class Font:
 class Map:
     def __init__(self):
         self.image = load_image('Tengai/Resource/Map/forest.png')
+        self.image2 = load_image('Tengai/Resource/Map/forest.png')
+        self.m_ScrollX = 10.0
+        self.m_Map1_ScrollX = 540.0
+        self.m_Map2_ScrollX = 1620.0
 
     def draw(self):
-        self.image.draw(400, 300)
+        #self.image.draw(400, 300)
+        self.image.clip_draw(0,0,3520,720,self.m_Map1_ScrollX,300,1080,600)
+        self.image2.clip_draw(0,0,3520,720,self.m_Map2_ScrollX,300,1080,600)
 
+    def update(self):
+        self.m_Map1_ScrollX -= self.m_ScrollX
+        self.m_Map2_ScrollX -= self.m_ScrollX
+
+        if self.m_Map1_ScrollX < -540.0:
+            self.m_Map1_ScrollX = 1610.0
+
+        if self.m_Map2_ScrollX < -540.0:
+            self.m_Map2_ScrollX = 1610.0
 
 def enter():
     global  m_map,m_ObjectMgr,m_BackObj1,m_BackObj2
@@ -51,8 +66,8 @@ def enter():
     m_ObjectMgr.Add_Object('MON_GREEN', None, 700.0, 300.0)
     m_ObjectMgr.Add_Object('MON_GREEN', None, 700.0, 500.0)
 
-    m_BackObj1=BackObject.CBack_Object(240,500)
-    m_BackObj2=BackObject.CBack_Object(1300,500)
+    m_BackObj1 = BackObject.CBack_Object(240,500)
+    m_BackObj2 = BackObject.CBack_Object(1300,500)
     m_map = Map()
 
 def exit():
@@ -131,6 +146,7 @@ def update():
 
     m_BackObj1.update()
     m_BackObj2.update()
+    m_map.update()
     m_ObjectMgr.Update_Object()
 
     delay(0.015)

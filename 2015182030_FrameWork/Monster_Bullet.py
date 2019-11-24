@@ -23,8 +23,8 @@ class CMonster_Bullet:
             CMonster_Bullet.image = load_image('Tengai/Resource/Bullet/Monster/enemyMissile.png')
         self.m_bIsDead = False
         self.m_LifeTime = 100
-        self.m_iAtk=10
-        self.m_Rad=10
+        self.m_iAtk = 10
+        self.m_Rad = 10
         self.m_fSpeed = 250
 
     def __init__(self, _x, _y, randDir,_angle):
