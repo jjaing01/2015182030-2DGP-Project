@@ -58,7 +58,7 @@ class Map:
             self.m_Map2_ScrollX = 1610.0
 
 def enter():
-    global  m_map,m_ObjectMgr,m_BackObj1,m_BackObj2
+    global m_map, m_ObjectMgr, m_BackObj1, m_BackObj2
 
     m_ObjectMgr = ObjectMgr.CObjectMgr()
     m_ObjectMgr.Add_Object('PLAYER')
