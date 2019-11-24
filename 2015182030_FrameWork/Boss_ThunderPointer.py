@@ -14,7 +14,7 @@ image = []
 image_num=None
 
 
-class CBoss_Thunder:
+class CBoss_ThunderPointer:
     def __init__(self):
         pass
 
@@ -22,10 +22,10 @@ class CBoss_Thunder:
         global image, image_num
         self.x, self.y = _x, _y
 
-        address = 'Tengai/Resource/Bullet/Thunder/Thunder'
+        address = 'Tengai/Resource/Bullet/LightningPointer/LightningPointer'
         extension ='.png'
 
-        for n in range(0, 10):
+        for n in range(0, 3):
             all_address = address + str(n) + extension
             image_num = load_image(all_address)
             image.append(image_num)
@@ -46,17 +46,20 @@ class CBoss_Thunder:
         if self.m_bIsDead == True:
             return -1
         # 죽는 조건
-        if self.m_LifeTime > 800.0:
+        if self.m_LifeTime > 150.0:
+            main_state.m_ObjectMgr.Add_Object('THUNDER', None, self.x, self.y)
             self.m_bIsDead = True
 
         self.m_LifeTime += 70.0 * game_framework.frame_time
 
         # 애니메이션
-        if self.iNumber > 9.0:
-            self.m_bIsDead = True
+        if self.iNumber > 3.0:
+            self.iNumber = 2.9
 
-        self.iNumber += 15.0 * game_framework.frame_time
+        self.iNumber += 1.0 * game_framework.frame_time
+        print("Create Pointer")
 
     def draw(self):
         #image[int(self.iNumber)].draw(self.x, self.y,50, 50)
-        image[int(self.iNumber)].clip_composite_draw(int(self.iNumber), 0, 140, 650, self.m_fAngle, '', self.x, self.y)
+        image[int(self.iNumber)].clip_composite_draw(int(self.iNumber), 0, 42, 25, self.m_fAngle, '', self.x, self.y)
+        print("Create Pointer")

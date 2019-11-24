@@ -8,6 +8,7 @@ from pico2d import *
 import game_framework
 import Player_Bullet
 import Monster_Bullet
+import Boss_ThunderPointer
 import main_state
 
 name = "Mon_Boss"
@@ -77,8 +78,19 @@ class CMonBoss:
             self.bIsAtkPattern = False
             self.AtkPattern = 0
 
-        # 2.유도탄 3발
-        # 3.레이저
+
+        # 2.번개
+        if self.AtkPattern == 1 and self.bIsAtkPattern == True:
+            main_state.m_ObjectMgr.Add_Object('THUNDER_POINTER', Boss_ThunderPointer.CBoss_ThunderPointer(500,300))
+            # main_state.m_ObjectMgr.Add_Object('THUNDER_POINTER', Boss_ThunderPointer.CBoss_ThunderPointer(self.x,self.y))
+            # main_state.m_ObjectMgr.Add_Object('THUNDER_POINTER', Boss_ThunderPointer.CBoss_ThunderPointer(self.x,self.y))
+            # main_state.m_ObjectMgr.Add_Object('THUNDER_POINTER', Boss_ThunderPointer.CBoss_ThunderPointer(self.x,self.y))
+            # main_state.m_ObjectMgr.Add_Object('THUNDER_POINTER', Boss_ThunderPointer.CBoss_ThunderPointer(self.x,self.y))
+
+            self.bIsAtkPattern = False
+            self.AtkPattern = 1
+
+        # 3.유도탄 3발
         # 4.투명
 
         #움직임

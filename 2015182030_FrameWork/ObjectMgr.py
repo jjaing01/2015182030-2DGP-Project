@@ -15,6 +15,8 @@ import Monster_Bullet
 import CollisionMgr
 import Player_Shield
 import Player_FireBall
+import Boss_ThunderPointer
+import Boss_Thunder
 import Item
 
 PLAYER, PLAYER_BULLET, MON_GREEN = range(3)
@@ -28,6 +30,8 @@ m_MonsterLst = []
 m_EffectLst = []
 m_ItemLst = []
 m_FireBallLst = []
+m_ThunderPointLst = []
+m_ThunderLst = []
 
 Event = 0
 
@@ -39,6 +43,8 @@ m_ObjectLst.append(m_MBulletLst)
 m_ObjectLst.append(m_ItemLst)
 m_ObjectLst.append(m_ShieldLst)
 m_ObjectLst.append(m_FireBallLst)
+m_ObjectLst.append(m_ThunderPointLst)
+m_ObjectLst.append(m_ThunderLst)
 
 class CObjectMgr:
 
@@ -61,6 +67,14 @@ class CObjectMgr:
         elif name == 'FIRE_BALL':
             obj = Player_FireBall.CPlayer_FireBall(x, y)
             m_FireBallLst.append(obj)
+
+        elif name == 'THUNDER_POINTER':
+            obj = Boss_ThunderPointer.CBoss_ThunderPointer(x, y)
+            m_ThunderPointLst.append(obj)
+
+        elif name == 'THUNDER':
+            obj = Boss_Thunder.CBoss_Thunder(x, y)
+            m_ThunderPointLst.append(obj)
 
         elif name == 'MON_GREEN':
             obj = Monster_Green.CMonGreen(x,y)
