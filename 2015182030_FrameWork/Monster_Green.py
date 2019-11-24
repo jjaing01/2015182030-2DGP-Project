@@ -51,11 +51,11 @@ class CMonGreen:
         if self.iHp == 0:
             self.m_bIsDead = True
         # 공격 주기
-        if self.m_AttackTime > 80:
+        if self.m_AttackTime > 100.0:
             main_state.m_ObjectMgr.Add_Object('MONSTER_BULLET', None, self.x, self.y)
-            self.m_AttackTime = 0
+            self.m_AttackTime = 0.0
 
-        self.m_AttackTime += 1
+        self.m_AttackTime += 100.0 * game_framework.frame_time
 
         # 움직임
         self.Change_Dir()

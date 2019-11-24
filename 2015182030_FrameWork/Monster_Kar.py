@@ -62,13 +62,14 @@ class CMonKar:
             return -1
         # 죽는 조건
         if self.iHp == 0:
-            self.m_bIsDead=True
-        # 공격 주기
-        if self.m_AttackTime>80:
-            main_state.m_ObjectMgr.Add_Object('MONSTER_BULLET', None, self.x, self.y)
-            self.m_AttackTime=0
+            self.m_bIsDead = True
 
-        self.m_AttackTime += 1
+        # 공격 주기
+        # if self.m_AttackTime>80:
+        #     main_state.m_ObjectMgr.Add_Object('MONSTER_BULLET', None, self.x, self.y)
+        #     self.m_AttackTime=0
+        #
+        # self.m_AttackTime += 1
 
         # 움직임
         tempMonList = main_state.m_ObjectMgr.Get_PlayerList()

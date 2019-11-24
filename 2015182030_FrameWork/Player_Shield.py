@@ -50,7 +50,7 @@ class CPlayer_Shield:
             self.m_bIsDead = True
 
         self.m_fAngle += 800.0 * game_framework.frame_time
-        self.m_LifeTime += 50.0 * game_framework.frame_time
+        self.m_LifeTime += 70.0 * game_framework.frame_time
 
         #쉴드 방향
         tempList = main_state.m_ObjectMgr.Get_PlayerList()

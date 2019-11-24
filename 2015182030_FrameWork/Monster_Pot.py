@@ -54,7 +54,7 @@ class CMonPot:
             main_state.m_ObjectMgr.Add_Object('MONSTER_BULLET', None, self.x, self.y)
             self.m_AttackTime = 0
 
-        self.m_AttackTime += 1
+        self.m_AttackTime += 10 * game_framework.frame_time
 
         # 움직임
         self.Change_Dir()

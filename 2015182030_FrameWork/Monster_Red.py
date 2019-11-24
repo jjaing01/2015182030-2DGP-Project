@@ -49,12 +49,15 @@ class CMonRed:
         # 죽는 조건
         if self.iHp == 0:
             self.m_bIsDead = True
+
         # 공격 주기
-        if self.m_AttackTime > 80:
+        if self.m_AttackTime > 100:
             main_state.m_ObjectMgr.Add_Object('MONSTER_BULLET', None, self.x, self.y)
+            main_state.m_ObjectMgr.Add_Object('MONSTER_BULLET', None, self.x, self.y + 30)
+            main_state.m_ObjectMgr.Add_Object('MONSTER_BULLET', None, self.x, self.y - 30)
             self.m_AttackTime = 0
 
-        self.m_AttackTime += 1
+        self.m_AttackTime += 50 * game_framework.frame_time
 
         # 움직임
         self.Change_Dir()

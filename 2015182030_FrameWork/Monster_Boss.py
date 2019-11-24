@@ -57,7 +57,7 @@ class CMonBoss:
             self.m_AttackTime = 0
             self.bIsAtkPattern = True
 
-        self.m_AttackTime += 1
+        self.m_AttackTime += 10 * game_framework.frame_time
 
         # 공격 패턴
         # 1. 난사 1회
