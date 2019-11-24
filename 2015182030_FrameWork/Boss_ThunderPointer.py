@@ -44,10 +44,10 @@ class CBoss_ThunderPointer:
     def update(self):
         #죽음
         if self.m_bIsDead == True:
+            main_state.m_ObjectMgr.Add_Object('THUNDER', None, self.x, self.y)
             return -1
         # 죽는 조건
         if self.m_LifeTime > 150.0:
-            main_state.m_ObjectMgr.Add_Object('THUNDER', None, self.x, self.y)
             self.m_bIsDead = True
 
         self.m_LifeTime += 70.0 * game_framework.frame_time
@@ -57,9 +57,9 @@ class CBoss_ThunderPointer:
             self.iNumber = 2.9
 
         self.iNumber += 1.0 * game_framework.frame_time
-        print("Create Pointer")
+
 
     def draw(self):
         #image[int(self.iNumber)].draw(self.x, self.y,50, 50)
         image[int(self.iNumber)].clip_composite_draw(int(self.iNumber), 0, 42, 25, self.m_fAngle, '', self.x, self.y)
-        print("Create Pointer")
+

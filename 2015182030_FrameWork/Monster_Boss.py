@@ -53,12 +53,14 @@ class CMonBoss:
             self.m_bIsDead = True
 
         # 공격 주기
-        if self.m_AttackTime > 80:
+        if self.m_AttackTime > 50:
             main_state.m_ObjectMgr.Add_Object('MONSTER_BULLET', None, self.x, self.y)
             self.m_AttackTime = 0
             self.bIsAtkPattern = True
 
         self.m_AttackTime += 10 * game_framework.frame_time
+
+        self.AtkPattern = random.randint(0,2)
 
         # 공격 패턴
         # 1. 난사 1회
@@ -81,11 +83,11 @@ class CMonBoss:
 
         # 2.번개
         if self.AtkPattern == 1 and self.bIsAtkPattern == True:
-            main_state.m_ObjectMgr.Add_Object('THUNDER_POINTER', Boss_ThunderPointer.CBoss_ThunderPointer(500,300))
-            # main_state.m_ObjectMgr.Add_Object('THUNDER_POINTER', Boss_ThunderPointer.CBoss_ThunderPointer(self.x,self.y))
-            # main_state.m_ObjectMgr.Add_Object('THUNDER_POINTER', Boss_ThunderPointer.CBoss_ThunderPointer(self.x,self.y))
-            # main_state.m_ObjectMgr.Add_Object('THUNDER_POINTER', Boss_ThunderPointer.CBoss_ThunderPointer(self.x,self.y))
-            # main_state.m_ObjectMgr.Add_Object('THUNDER_POINTER', Boss_ThunderPointer.CBoss_ThunderPointer(self.x,self.y))
+            main_state.m_ObjectMgr.Add_Object('THUNDER_POINTER', None, 200, 400)
+            main_state.m_ObjectMgr.Add_Object('THUNDER_POINTER', None, 400, 400)
+            main_state.m_ObjectMgr.Add_Object('THUNDER_POINTER', None, 600, 400)
+            main_state.m_ObjectMgr.Add_Object('THUNDER_POINTER', None, 800, 400)
+            main_state.m_ObjectMgr.Add_Object('THUNDER_POINTER', None, 900, 400)
 
             self.bIsAtkPattern = False
             self.AtkPattern = 1

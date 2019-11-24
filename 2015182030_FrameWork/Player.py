@@ -88,7 +88,6 @@ class CPlayer:
         if win32api.GetAsyncKeyState(0x32) & 0x8000:  # 2
             if self.m_CreateBulletTime > 4:
                 main_state.m_ObjectMgr.Add_Object("PLAYER_SHIELD", None, self.x, self.y)
-                main_state.m_ObjectMgr.Add_Object('THUNDER_POINTER', None, 500, 400)
 
         #총알 생성 주기
         if self.m_CreateBulletTime <= 5:
