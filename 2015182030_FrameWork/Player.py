@@ -79,7 +79,7 @@ class CPlayer:
         if win32api.GetAsyncKeyState(0x31) & 0x8000:  # 1
             if self.m_bIsSkill_Tiger == False:
                 # PosX, PosY, CX, CY, Speed, IsSingleEffect, IsAnimationEndDead, MaxFrame, LifeTime, ScaleX, ScaleY, FileName
-                GameObj = Effect.CEffect(self.x,60, 256, 256, 0.3, False, False, 64, 10, 800, 800, "PSkill.png")
+                GameObj = Effect.CEffect(self.x + 100, 60, 256, 256, 0.3, False, False, 64, 10, 800, 800, "PSkill.png")
                 main_state.m_ObjectMgr.Add_Object("EFFECT", GameObj)
                 CollisionMgr.Collision_Skill_1(ObjectMgr.m_MonsterLst)
 

@@ -1,4 +1,5 @@
 from pico2d import *
+import main_state
 
 time = 0.0
 
@@ -21,6 +22,7 @@ class CEffect:
         self.filename = FileName
         self.isSingleEffect = IsSingleEffect
         self.isAnimationEndDead = IsAnimationEndDead
+        self.m_bIsMeteo = False
 
         if CEffect.image[0] is None:
             CEffect.image[0] = load_image("Tengai/Resource/UI/Explode/Explode.png")
@@ -52,6 +54,19 @@ class CEffect:
         if time >= self.lifetime:
             self.IsDead = True
             time = 0.0
+
+        if self.filename == "PSkill.png" and self.m_bIsMeteo == False:
+            main_state.m_ObjectMgr.Add_Object("FIRE_BALL", None, 500, 600)
+            main_state.m_ObjectMgr.Add_Object("FIRE_BALL", None, 300, 580)
+            main_state.m_ObjectMgr.Add_Object("FIRE_BALL", None, 700, 510)
+            main_state.m_ObjectMgr.Add_Object("FIRE_BALL", None, 800, 600)
+            main_state.m_ObjectMgr.Add_Object("FIRE_BALL", None, 400, 500)
+            main_state.m_ObjectMgr.Add_Object("FIRE_BALL", None, 100, 550)
+            main_state.m_ObjectMgr.Add_Object("FIRE_BALL", None, 200, 700)
+            main_state.m_ObjectMgr.Add_Object("FIRE_BALL", None, 150, 650)
+            main_state.m_ObjectMgr.Add_Object("FIRE_BALL", None, 70, 450)
+            main_state.m_ObjectMgr.Add_Object("FIRE_BALL", None, 50, 350)
+            self.m_bIsMeteo = True
 
         return 0
         pass

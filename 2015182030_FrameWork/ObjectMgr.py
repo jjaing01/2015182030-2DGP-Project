@@ -14,6 +14,7 @@ import Monster_Boss
 import Monster_Bullet
 import CollisionMgr
 import Player_Shield
+import Player_FireBall
 import Item
 
 PLAYER, PLAYER_BULLET, MON_GREEN = range(3)
@@ -26,6 +27,7 @@ m_MBulletLst = []
 m_MonsterLst = []
 m_EffectLst = []
 m_ItemLst = []
+m_FireBall = []
 
 Event = 0
 
@@ -36,6 +38,7 @@ m_ObjectLst.append(m_EffectLst)
 m_ObjectLst.append(m_MBulletLst)
 m_ObjectLst.append(m_ItemLst)
 m_ObjectLst.append(m_ShieldLst)
+m_ObjectLst.append(m_FireBall)
 
 class CObjectMgr:
 
@@ -54,6 +57,10 @@ class CObjectMgr:
         elif name == 'PLAYER_SHIELD':
             obj = Player_Shield.CPlayer_Shield(x, y)
             m_ShieldLst.append(obj)
+
+        elif name == 'FIRE_BALL':
+            obj = Player_FireBall.CPlayer_FireBall(x, y)
+            m_FireBall.append(obj)
 
         elif name == 'MON_GREEN':
             obj = Monster_Green.CMonGreen(x,y)
