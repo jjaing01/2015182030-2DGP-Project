@@ -83,6 +83,22 @@ class CPlayer:
 
     def draw(self):
         self.image.clip_draw(self.frame * 32, 32 * self.dir, 32, 32, self.x, self.y, 70, 70)
-        self.hpUI.draw(15,580)
-        self.hpUI.draw(47,580)
-        self.hpUI.draw(79,580)
+
+        if self.iHP == 3:
+            self.hpUI.draw(15,580)
+            self.hpUI.draw(47,580)
+            self.hpUI.draw(79,580)
+
+        elif self.iHP == 2:
+            self.hpUI.draw(15, 580)
+            self.hpUI.draw(47, 580)
+        elif self.iHP == 1:
+            self.hpUI.draw(15, 580)
+        elif self.iHP == 0:
+            pass
+
+    def Skill_plus(self):
+        self.m_SkillCnt += 1
+
+    def Set_Life(self):
+        self.iHP -= 1

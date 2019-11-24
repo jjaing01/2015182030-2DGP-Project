@@ -23,6 +23,25 @@ def Check_Collision(Dst, Src):
 def Collision_Monster_Player(DstLst, SrcLst):
     # DstLst - Monster
     # SrcLst - Player
+    for Dst in DstLst:
+        for Src in SrcLst:
+            if Check_Collision(Dst, Src):
+                # Player Hp 감소
+                Dst.iHp = 0
+                Src.Set_Life()
+                # Monster 사망 시 Player Exp 증가.
+                if Dst.iHp <= 0:
+                    Dst.m_bIsDead = True
+
+                    # Monster 사망 Effect
+                    # PosX, PosY, CX, CY, Speed, IsSingleEffect, IsAnimationEndDead, MaxFrame, LifeTime, ScaleX, ScaleY, FileName
+                    GameObj = Effect.CEffect(Dst.x, Dst.y, 128, 128, 0.3, False, False, 15, 2.4, 114, 76, "Explode.png")
+                    main_state.m_ObjectMgr.Add_Object("EFFECT", GameObj)
+
+
+                pass
+
+    return False
     pass
 
 

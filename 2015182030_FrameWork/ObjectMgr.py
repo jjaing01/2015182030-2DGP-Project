@@ -96,6 +96,7 @@ class CObjectMgr:
 
         CollisionMgr.Collision_Monster_PLBullet(m_MonsterLst, m_PBulletLst)
         CollisionMgr.Collision_Player_Item(m_PlayerLst, m_ItemLst)
+        CollisionMgr.Collision_Monster_Player(m_MonsterLst,m_PlayerLst)
 
         for List in m_ObjectLst:
             for GameObj in List:
