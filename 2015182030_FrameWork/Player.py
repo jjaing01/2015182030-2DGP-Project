@@ -35,7 +35,9 @@ class CPlayer:
         self.dir = 1
         self.state = 'Right'
         self.m_bIsDead=False
-        self.m_CreateBulletTime=0
+        self.m_CreateBulletTime = 0
+        self.m_CreateTigerSkillTime = 0
+        self.m_bIsSkill_Tiger = False
         self.iHP = 3
         self.m_Rad = 60
         self.m_SkillCnt = 3
@@ -75,18 +77,28 @@ class CPlayer:
                 main_state.m_ObjectMgr.Add_Object('PLAYER_BULLET',None,self.x,self.y)
 
         if win32api.GetAsyncKeyState(0x31) & 0x8000:  # 1
-            if self.m_SkillCnt >= 1:
-                self.m_SkillCnt -= 1
-                # PosX, PosY, CX, CY, Speed, IsSingleEffect, IsAnimationEndDead, MaxFrame, LifeTime, ScaleX, ScaleY, FileName
-                GameObj = Effect.CEffect(self.x,60, 256, 256, 0.3, False, False, 64, 10, 800, 800, "PSkill.png")
-                main_state.m_ObjectMgr.Add_Object("EFFECT", GameObj)
-                CollisionMgr.Collision_Skill_1(ObjectMgr.m_MonsterLst)
+                if self.m_bIsSkill_Tiger == False:
+                    # PosX, PosY, CX, CY, Speed, IsSingleEffect, IsAnimationEndDead, MaxFrame, LifeTime, ScaleX, ScaleY, FileName
+                    GameObj = Effect.CEffect(self.x,60, 256, 256, 0.3, False, False, 64, 10, 800, 800, "PSkill.png")
+                    main_state.m_ObjectMgr.Add_Object("EFFECT", GameObj)
+                    CollisionMgr.Collision_Skill_1(ObjectMgr.m_MonsterLst)
+
+                self.m_bIsSkill_Tiger = True
 
 
         if self.m_CreateBulletTime <= 5:
             self.m_CreateBulletTime += 100 * game_framework.frame_time
         else:
             self.m_CreateBulletTime = 0
+
+        if self.m_bIsSkill_Tiger:
+            if self.m_CreateTigerSkillTime <= 5:
+                self.m_CreateTigerSkillTime += 100 * game_framework.frame_time
+            else:
+                self.m_CreateTigerSkillTime = 0
+                if self.m_SkillCnt >= 1:
+                    self.m_SkillCnt -= 1
+                self.m_bIsSkill_Tiger = False
 
     def draw(self):
         self.image.clip_draw(self.frame * 32, 32 * self.dir, 32, 32, self.x, self.y, 70, 70)
