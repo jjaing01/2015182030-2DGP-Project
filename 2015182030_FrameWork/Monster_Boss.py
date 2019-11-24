@@ -110,5 +110,5 @@ class CMonBoss:
             self.frame = 0
 
     def draw(self):
-        self.image.clip_draw(int(self.frame) * 450, 0, 450, 500, self.x,self.y,300,300)
+        self.image.clip_draw(int(self.frame) * 450, 0, 450, 500, self.x,self.y,300, 300)
 
