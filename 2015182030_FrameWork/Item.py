@@ -34,6 +34,9 @@ class CItem:
     def Dead_Object(self):
         self.m_bIsDead = True
 
+    def Get_ItemOption(self):
+        return self.rand
+
     def Change_Dir(self):
         if self.x<=200 or self.x > 1080:
             self.dirX = self.dirX * -1.0

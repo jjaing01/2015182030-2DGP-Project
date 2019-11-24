@@ -21,17 +21,24 @@ class CPlayer:
         self.x, self.y = 0, 90
         self.frame = 0
         self.framenum = 1
+        # Player
         self.image = load_image('Tengai/Resource/Player/Player.png')
+        # Life UI
         self.hpUI = None
         if self.hpUI is None:
             self.hpUI = load_image('Tengai/Resource/UI/LIFE/LIFE.png')
+        # Skill UI
+        self.skillUI = None
+        if self.skillUI is None:
+            self.skillUI = load_image('Tengai/Resource/UI/Ultimate/Ultimate.png')
+
         self.dir = 1
         self.state = 'Right'
         self.m_bIsDead=False
         self.m_CreateBulletTime=0
         self.iHP = 3
         self.m_Rad = 60
-        self.m_SkillCnt = 1
+        self.m_SkillCnt = 3
         self.m_fSpeed = 250
 
     def update(self):
@@ -84,11 +91,11 @@ class CPlayer:
     def draw(self):
         self.image.clip_draw(self.frame * 32, 32 * self.dir, 32, 32, self.x, self.y, 70, 70)
 
-        if self.iHP == 3:
+        # Player HP
+        if self.iHP >= 3:
             self.hpUI.draw(15,580)
             self.hpUI.draw(47,580)
             self.hpUI.draw(79,580)
-
         elif self.iHP == 2:
             self.hpUI.draw(15, 580)
             self.hpUI.draw(47, 580)
@@ -97,8 +104,22 @@ class CPlayer:
         elif self.iHP == 0:
             pass
 
+        # Player Skill
+        if self.m_SkillCnt >= 3:
+            self.skillUI.draw(15, 530)
+            self.skillUI.draw(47, 530)
+            self.skillUI.draw(79, 530)
+        elif self.m_SkillCnt == 2:
+            self.skillUI.draw(15, 530)
+            self.skillUI.draw(47, 530)
+        elif self.m_SkillCnt == 1:
+            self.skillUI.draw(15, 530)
+        elif self.m_SkillCnt == 0:
+            pass
+
     def Skill_plus(self):
-        self.m_SkillCnt += 1
+        if self.m_SkillCnt < 4:
+            self.m_SkillCnt += 1
 
     def Set_Life(self):
         self.iHP -= 1
