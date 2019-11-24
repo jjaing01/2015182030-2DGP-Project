@@ -27,7 +27,7 @@ m_MBulletLst = []
 m_MonsterLst = []
 m_EffectLst = []
 m_ItemLst = []
-m_FireBall = []
+m_FireBallLst = []
 
 Event = 0
 
@@ -38,7 +38,7 @@ m_ObjectLst.append(m_EffectLst)
 m_ObjectLst.append(m_MBulletLst)
 m_ObjectLst.append(m_ItemLst)
 m_ObjectLst.append(m_ShieldLst)
-m_ObjectLst.append(m_FireBall)
+m_ObjectLst.append(m_FireBallLst)
 
 class CObjectMgr:
 
@@ -60,7 +60,7 @@ class CObjectMgr:
 
         elif name == 'FIRE_BALL':
             obj = Player_FireBall.CPlayer_FireBall(x, y)
-            m_FireBall.append(obj)
+            m_FireBallLst.append(obj)
 
         elif name == 'MON_GREEN':
             obj = Monster_Green.CMonGreen(x,y)
@@ -109,6 +109,7 @@ class CObjectMgr:
         global m_ObjectLst
 
         CollisionMgr.Collision_Monster_PLBullet(m_MonsterLst, m_PBulletLst)
+        CollisionMgr.Collision_Monster_PLBullet(m_MonsterLst, m_FireBallLst)
         CollisionMgr.Collision_Player_Item(m_PlayerLst, m_ItemLst)
         CollisionMgr.Collision_Monster_Player(m_MonsterLst,m_PlayerLst)
         CollisionMgr.Collision_Shield_MBullet(m_ShieldLst,m_MBulletLst)

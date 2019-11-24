@@ -1,5 +1,6 @@
 from pico2d import *
 import main_state
+import game_framework
 
 time = 0.0
 

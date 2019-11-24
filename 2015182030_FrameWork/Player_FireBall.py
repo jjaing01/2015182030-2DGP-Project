@@ -20,7 +20,7 @@ class CPlayer_FireBall:
 
     def __init__(self, _x, _y):
         global image, image_num
-        self.x, self.y = _x, 600
+        self.x, self.y = _x, _y
 
         address = 'Tengai/Resource/Bullet/FireBall/FireBall'
         extension ='.png'
@@ -32,8 +32,8 @@ class CPlayer_FireBall:
 
         self.m_bIsDead = False
         self.m_LifeTime = 0.0
-        self.m_iAtk = 50
-        self.m_Rad = 10
+        self.m_iAtk = 200
+        self.m_Rad = 15
         self.m_fSpeed = random.randint(100,450)
         self.iNumber = 0.0
         self.m_fAngle = 0.0
@@ -56,12 +56,11 @@ class CPlayer_FireBall:
         self.x += self.m_fSpeed * game_framework.frame_time
         self.y -= self.m_fSpeed * game_framework.frame_time
 
-
         # 애니메이션
         if self.iNumber > 4.8:
             self.iNumber = 4.0
 
-        self.iNumber += 5 * game_framework.frame_time
+        self.iNumber += 5.0 * game_framework.frame_time
 
     def draw(self):
         #image[int(self.iNumber)].draw(self.x, self.y,50, 50)
