@@ -41,6 +41,9 @@ class Map:
         self.m_ScrollX = 5.0
         self.m_Map1_ScrollX = 540.0
         self.m_Map2_ScrollX = 1620.0
+        self.bgm = load_music('Tengai/Sound/tengai.ogg')
+        self.bgm.set_volume(64)
+        self.bgm.repeat_play()
 
     def draw(self):
         #self.image.draw(400, 300)
