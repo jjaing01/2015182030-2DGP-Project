@@ -42,7 +42,7 @@ class CSoundMgr:
         self.Monster_Dead.set_volume(12)
         m_SoundLst.append(self.Monster_Dead)
 
-        self.Item = load_music('Tengai/Sound/Item.mp3')
+        self.Item = load_wav('Tengai/Sound/Item.wav')
         self.Item.set_volume(100)
         m_SoundLst.append(self.Item)
 
