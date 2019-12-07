@@ -18,7 +18,7 @@ class CBoss_Thunder:
     def __init__(self):
         pass
 
-    def __init__(self, _x, _y):
+    def __init__(self, _x, _y, idx):
         global image, image_num
         self.x, self.y = _x, _y
 
@@ -37,6 +37,9 @@ class CBoss_Thunder:
         self.m_fSpeed = random.randint(100,450)
         self.iNumber = 0.0
         self.m_fAngle = 0.0
+
+        if idx == 1:
+            main_state.m_SoundMgr.Search_Sound("BOSS_THUNDER")
 
     def Dead_Object(self):
         self.m_bIsDead = True

@@ -51,7 +51,7 @@ class CObjectMgr:
     def __init__(self):
         self.m_IsDead = 0
 
-    def Add_Object(self, name, _obj=None, x=0, y=0):
+    def Add_Object(self, name, _obj=None, x=0, y=0,idx=0):
         if name == 'PLAYER':
             obj = Player.CPlayer()
             m_PlayerLst.append(obj)
@@ -69,11 +69,11 @@ class CObjectMgr:
             m_FireBallLst.append(obj)
 
         elif name == 'THUNDER_POINTER':
-            obj = Boss_ThunderPointer.CBoss_ThunderPointer(x, y)
+            obj = Boss_ThunderPointer.CBoss_ThunderPointer(x, y,idx)
             m_ThunderPointLst.append(obj)
 
         elif name == 'THUNDER':
-            obj = Boss_Thunder.CBoss_Thunder(x, y)
+            obj = Boss_Thunder.CBoss_Thunder(x, y, idx)
             m_ThunderPointLst.append(obj)
 
         elif name == 'MON_GREEN':

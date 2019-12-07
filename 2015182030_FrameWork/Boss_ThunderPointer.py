@@ -18,9 +18,10 @@ class CBoss_ThunderPointer:
     def __init__(self):
         pass
 
-    def __init__(self, _x, _y):
+    def __init__(self, _x, _y,idx):
         global image, image_num
         self.x, self.y = _x, _y
+        self.idx = idx
 
         address = 'Tengai/Resource/Bullet/LightningPointer/LightningPointer'
         extension ='.png'
@@ -44,7 +45,10 @@ class CBoss_ThunderPointer:
     def update(self):
         #죽음
         if self.m_bIsDead == True:
-            main_state.m_ObjectMgr.Add_Object('THUNDER', None, self.x, self.y)
+            if self.idx == 1:
+                main_state.m_ObjectMgr.Add_Object('THUNDER', None, self.x, self.y, 1)
+            else:
+                main_state.m_ObjectMgr.Add_Object('THUNDER', None, self.x, self.y)
             return -1
         # 죽는 조건
         if self.m_LifeTime > 150.0:

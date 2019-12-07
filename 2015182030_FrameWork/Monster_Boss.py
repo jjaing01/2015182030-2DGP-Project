@@ -84,7 +84,7 @@ class CMonBoss:
 
         # 2.번개
         if self.AtkPattern == 1 and self.bIsAtkPattern == True:
-            main_state.m_ObjectMgr.Add_Object('THUNDER_POINTER', None, 200, 400)
+            main_state.m_ObjectMgr.Add_Object('THUNDER_POINTER', None, 200, 400,1)
             main_state.m_ObjectMgr.Add_Object('THUNDER_POINTER', None, 400, 400)
             main_state.m_ObjectMgr.Add_Object('THUNDER_POINTER', None, 600, 400)
             main_state.m_ObjectMgr.Add_Object('THUNDER_POINTER', None, 800, 400)

@@ -31,20 +31,24 @@ class CSoundMgr:
     def __init__(self):
         self.m_IsDead = 0
         self.Monster_Bullet = load_wav('Tengai/Sound/Attack.wav')
-        self.Monster_Bullet.set_volume(12)
+        self.Monster_Bullet.set_volume(32)
         m_SoundLst.append(self.Monster_Bullet)
 
         self.Player_Skill = load_wav('Tengai/Sound/AyinSpecialAttack.wav')
-        self.Player_Skill.set_volume(32)
+        self.Player_Skill.set_volume(60)
         m_SoundLst.append(self.Player_Skill)
 
         self.Monster_Dead = load_wav('Tengai/Sound/Explode.wav')
-        self.Monster_Dead.set_volume(12)
+        self.Monster_Dead.set_volume(32)
         m_SoundLst.append(self.Monster_Dead)
 
         self.Item = load_wav('Tengai/Sound/Item.wav')
         self.Item.set_volume(100)
         m_SoundLst.append(self.Item)
+
+        self.Thunder = load_wav('Tengai/Sound/thunder.wav')
+        self.Thunder.set_volume(100)
+        m_SoundLst.append(self.Thunder)
 
     def Search_Sound(self,name):
         if name == 'ITEM':
@@ -55,6 +59,8 @@ class CSoundMgr:
             self.Monster_Dead.play(1)
         elif name == 'PLAYER_SKILL':
             self.Player_Skill.play(1)
+        elif name == 'BOSS_THUNDER':
+            self.Thunder.play(1)
 
     def Dead_Object(self):
         for List in m_SoundLst:
