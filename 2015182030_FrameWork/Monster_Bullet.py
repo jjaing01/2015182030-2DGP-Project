@@ -38,6 +38,7 @@ class CMonster_Bullet:
         self.m_bIsRandomShoot = randDir
         self.m_Angle = _angle
         self.m_fSpeed = 250
+        main_state.m_SoundMgr.Search_Sound('MONSTER_BULLET')
 
     def Dead_Object(self):
         self.m_bIsDead = True

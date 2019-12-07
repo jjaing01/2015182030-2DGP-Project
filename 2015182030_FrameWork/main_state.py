@@ -14,6 +14,7 @@ import Monster_Red
 import Monster_Boss
 import ObjectMgr
 import BackObject
+import SoundMgr
 
 name = "MainState"
 
@@ -21,8 +22,9 @@ m_ObjectMgr = None
 m_map = None
 m_BackObj1=None
 m_BackObj2=None
+m_SoundMgr = None
 font = None
-reCreateTime=0
+reCreateTime = 0
 
 m_pattern = 0
 m_bIsCreate=True
@@ -42,7 +44,7 @@ class Map:
         self.m_Map1_ScrollX = 540.0
         self.m_Map2_ScrollX = 1620.0
         self.bgm = load_music('Tengai/Sound/tengai.ogg')
-        self.bgm.set_volume(64)
+        self.bgm.set_volume(32)
         self.bgm.repeat_play()
 
     def draw(self):
@@ -61,13 +63,15 @@ class Map:
             self.m_Map2_ScrollX = 1610.0
 
 def enter():
-    global m_map, m_ObjectMgr, m_BackObj1, m_BackObj2
+    global m_map, m_ObjectMgr, m_BackObj1, m_BackObj2, m_SoundMgr
 
     m_ObjectMgr = ObjectMgr.CObjectMgr()
     m_ObjectMgr.Add_Object('PLAYER')
     m_ObjectMgr.Add_Object('MON_GREEN', None, 700.0, 100.0)
     m_ObjectMgr.Add_Object('MON_GREEN', None, 700.0, 300.0)
     m_ObjectMgr.Add_Object('MON_GREEN', None, 700.0, 500.0)
+
+    m_SoundMgr = SoundMgr.CSoundMgr()
 
     m_BackObj1 = BackObject.CBack_Object(240,500)
     m_BackObj2 = BackObject.CBack_Object(1300,500)

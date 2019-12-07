@@ -51,7 +51,8 @@ class CMonGreen:
         if self.iHp == 0:
             self.m_bIsDead = True
         # 공격 주기
-        if self.m_AttackTime > 100.0:
+        iRand = random.randrange(50,100)
+        if self.m_AttackTime > iRand:
             main_state.m_ObjectMgr.Add_Object('MONSTER_BULLET', None, self.x, self.y)
             self.m_AttackTime = 0.0
 

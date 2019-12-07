@@ -68,7 +68,7 @@ def Collision_Monster_PLBullet(DstLst, SrcLst):
                     if Rand == 1:
                         ItemObj = Item.CItem(Dst.x, Dst.y)
                         main_state.m_ObjectMgr.Add_Object("ITEM", ItemObj)
-
+                return True
                 pass
 
     return False
@@ -104,6 +104,7 @@ def Collision_Player_Item(DstLst, SrcLst):
                 # PosX, PosY, CX, CY, Speed, IsSingleEffect, IsAnimationEndDead, MaxFrame, LifeTime, ScaleX, ScaleY, FileName
                 GameObj = Effect.CEffect(Src.x, Src.y, 120, 120, 0.3, False, False, 20, 5.4, 114, 76, "Effect5.png")
                 main_state.m_ObjectMgr.Add_Object("EFFECT", GameObj)
+                return True
             pass
 
     return False
