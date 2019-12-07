@@ -81,7 +81,7 @@ class CPlayer:
                 # PosX, PosY, CX, CY, Speed, IsSingleEffect, IsAnimationEndDead, MaxFrame, LifeTime, ScaleX, ScaleY, FileName
                 GameObj = Effect.CEffect(self.x, 60, 256, 256, 0.27, False, False, 64, 10, 800, 800, "PSkill.png")
                 main_state.m_ObjectMgr.Add_Object("EFFECT", GameObj)
-
+                main_state.m_SoundMgr.Search_Sound("PLAYER_SKILL")
 
             self.m_bIsSkill_Tiger = True
 

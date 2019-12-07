@@ -31,7 +31,7 @@ class CSoundMgr:
     def __init__(self):
         self.m_IsDead = 0
         self.Monster_Bullet = load_wav('Tengai/Sound/Attack.wav')
-        self.Monster_Bullet.set_volume(32)
+        self.Monster_Bullet.set_volume(12)
         m_SoundLst.append(self.Monster_Bullet)
 
         self.Player_Skill = load_wav('Tengai/Sound/AyinSpecialAttack.wav')
@@ -39,11 +39,11 @@ class CSoundMgr:
         m_SoundLst.append(self.Player_Skill)
 
         self.Monster_Dead = load_wav('Tengai/Sound/Explode.wav')
-        self.Monster_Dead.set_volume(32)
+        self.Monster_Dead.set_volume(12)
         m_SoundLst.append(self.Monster_Dead)
 
         self.Item = load_music('Tengai/Sound/Item.mp3')
-        self.Item.set_volume(32)
+        self.Item.set_volume(100)
         m_SoundLst.append(self.Item)
 
     def Search_Sound(self,name):

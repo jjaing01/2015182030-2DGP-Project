@@ -45,6 +45,7 @@ class CMonRed:
     def update(self):
         # 죽음
         if self.m_bIsDead == True:
+            main_state.m_SoundMgr.Search_Sound('MONSTER_DEAD')
             return -1
         # 죽는 조건
         if self.iHp == 0:

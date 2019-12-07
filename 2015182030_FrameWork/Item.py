@@ -46,6 +46,7 @@ class CItem:
     def update(self):
         # 죽음
         if self.m_bIsDead == True:
+            main_state.m_SoundMgr.Search_Sound('ITEM')
             return -1
 
         # 움직임
