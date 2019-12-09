@@ -28,7 +28,7 @@ class CMonGreen:
         self.dirY = 0.5
         self.iHp = 100
         self.m_bIsDead=False
-        self.m_Rad=60
+        self.m_Rad=20
         self.m_AttackTime = random.randint(0,10)
         self.max_frame = 4
         self.Frame_speed = 0.3

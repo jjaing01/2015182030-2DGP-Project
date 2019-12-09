@@ -28,7 +28,7 @@ class CMonKar:
         self.dirY = 1.0
         self.iHp = 300
         self.m_bIsDead=False
-        self.m_Rad=60
+        self.m_Rad=20
         self.m_AttackTime = random.randint(0,10)
         self.myAngle = 0.0 #플레이어를 향하는 각도
         self.max_frame = 6
