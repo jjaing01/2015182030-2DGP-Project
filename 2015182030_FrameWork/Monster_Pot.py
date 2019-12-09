@@ -27,7 +27,7 @@ class CMonPot:
         self.dirY = 1.0
         self.iHp = 400
         self.m_bIsDead=False
-        self.m_Rad = 20
+        self.m_Rad = 50
         self.m_AttackTime = random.randint(0,10)
         self.max_frame = 4
         self.Frame_speed = 0.3

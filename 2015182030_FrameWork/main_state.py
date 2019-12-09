@@ -78,7 +78,7 @@ def enter():
     m_map = Map()
 
 def exit():
-    global m_map,m_ObjectMgr
+    global m_map,m_ObjectMgr,m_BackObj1,m_BackObj2
     del(m_map)
     del(m_BackObj1)
     del(m_BackObj2)

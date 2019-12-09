@@ -10,6 +10,7 @@ import Player_Bullet
 import Monster_Bullet
 import Boss_ThunderPointer
 import main_state
+import end_state
 
 name = "Mon_Boss"
 
@@ -48,6 +49,7 @@ class CMonBoss:
         # 죽음
         if self.m_bIsDead == True:
             main_state.m_SoundMgr.Search_Sound('MONSTER_DEAD')
+            game_framework.change_state(end_state)
             return -1
         # 죽는 조건
         if self.iHp == 0:
