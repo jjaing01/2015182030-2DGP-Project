@@ -50,7 +50,9 @@ class CPlayer:
 
         if self.m_iCollisionTime > 0.0:
             self.m_iCollisionTime -= game_framework.frame_time
-            
+        elif self.m_iCollisionTime <= 0.0:
+            self.m_iCollisionTime = 0.0
+
 
         self.frame = (self.frame + 1) % self.framenum
         if (win32api.GetAsyncKeyState(0x25) & 0x8000 or win32api.GetAsyncKeyState(0x26) & 0x8000
@@ -146,6 +148,7 @@ class CPlayer:
     def Set_Life(self):
         if self.m_iCollisionTime == 0.0:
             if self.iHP > 0:
+                self.m_iCollisionTime = 3.0
                 self.iHP -= 1
 
     def HP_plus(self):
