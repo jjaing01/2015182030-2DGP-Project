@@ -42,10 +42,15 @@ class CPlayer:
         self.m_Rad = 60
         self.m_SkillCnt = 3
         self.m_fSpeed = 250
+        self.m_iCollisionTime = 0.0
 
     def update(self):
         if self.m_bIsDead == True:
             pass
+
+        if self.m_iCollisionTime > 0.0:
+            self.m_iCollisionTime -= game_framework.frame_time
+            
 
         self.frame = (self.frame + 1) % self.framenum
         if (win32api.GetAsyncKeyState(0x25) & 0x8000 or win32api.GetAsyncKeyState(0x26) & 0x8000
@@ -139,8 +144,9 @@ class CPlayer:
             self.m_SkillCnt += 1
 
     def Set_Life(self):
-        if self.iHP > 0:
-            self.iHP -= 1
+        if self.m_iCollisionTime == 0.0:
+            if self.iHP > 0:
+                self.iHP -= 1
 
     def HP_plus(self):
         if self.iHP < 4:
@@ -148,3 +154,6 @@ class CPlayer:
 
     def Get_Position(self):
         return self.x,self.y
+
+    def Set_CollisionTime(self):
+        self.m_iCollisionTime = 3.0
